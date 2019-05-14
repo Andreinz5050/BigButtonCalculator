@@ -4,6 +4,7 @@ package com.example.android.bigbuttoncalculator
 import android.content.res.Configuration
 import android.graphics.drawable.Animatable
 import android.graphics.drawable.AnimatedVectorDrawable
+import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.graphics.drawable.AnimatedVectorDrawableCompat
@@ -43,9 +44,11 @@ class MainActivity : AppCompatActivity() {
     private var mDrawerLayout: DrawerLayout? = null
 
 
-    private val menuAnimHamToCross: Animatable? = R.drawable.anim_btn_menu_ham_to_cross as Animatable
+    private val menuAnimHamToCross: AnimationDrawable?
+        get() = R.drawable.anim_btn_menu_ham_to_cross as AnimationDrawable
     internal var myToolbar: Toolbar? = null
-    private val menuAnimCrossToHam: Animatable ? = R.drawable.anim_btn_menu_cross_to_ham as Animatable
+    private val menuAnimCrossToHam: AnimationDrawable?
+        get() = R.drawable.anim_btn_menu_cross_to_ham as AnimationDrawable
 
     private var mMenuFlag = true
 
@@ -85,8 +88,8 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        supportActionBar!!.setHomeButtonEnabled(true)
-        supportActionBar!!.setHomeAsUpIndicator(R.drawable.start_btn_menu)
+        supportActionBar!!.setHomeButtonEnabled(false)
+        //supportActionBar!!.setHomeAsUpIndicator(R.drawable.start_btn_menu)
 
 
     }

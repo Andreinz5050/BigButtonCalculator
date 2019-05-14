@@ -9,7 +9,7 @@ import android.os.Handler
 import android.widget.ImageView
 
 class SplashActivity : Activity() {
-    internal var vectorAnimation: AnimationDrawable? = null
+    //internal var vectorAnimation: AnimationDrawable? = null
     // Время в милесекундах, в течение которого будет отображаться Splash Screen
     private val SPLASH_DISPLAY_LENGTH = 2000
 
