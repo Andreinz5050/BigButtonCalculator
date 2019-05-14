@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- =============================================================== -->
+    <!-- Material-Light style colors -->
+    <!-- =============================================================== -->
+
+    <color name="colorToolBarBackground">#DFDFDF</color>
+
+    <color name="colorAppBackground">#FCFCFC</color>
+    <color name="colorPDark">#2196F3</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorP">#26A69A</color>
+    <color name="colorDisplayText">#000000</color>
+
+
+    <color name="colorPlusButton">#1976D2</color>
+    <color name="colorMultiplyButton">#00796B</color>
+    <color name="colorDivideButton">#C2185B</color>
+    <color name="colorMinusButton">#D32F2F</color>
+    <color name="colorEqualButton">#FBC02D</color>
+    <color name="colorPercentageButton">#512DA8</color>
+
+    <color name="colorPlusButtonFocus">#5C6BC0</color>
+    <color name="colorMultiplyButtonFocus">#26A69A</color>
+    <color name="colorDivideButtonFocus">#EC407A</color>
+    <color name="colorMinusButtonFocus">#EF5350</color>
+    <color name="colorEqualButtonFocus">#FFCA28</color>
+    <color name="colorPercentageButtonFocus">#7E57C2</color>
+    <color name="colorBackgroundDeleteButtonFocus">#EF5350</color>
+
+    <color name="colorBackgroundButton">#D8C8E6C9</color>
+    <color name="colorBackgroundOperationButton">#DAB2EBF2</color>
+    <color name="colorBackgroundDeleteButton">#D8FFCDD2</color>
+
+
+
+    <!-- =============================================================== -->
+    <!-- Material-Dark style colors -->
+    <!-- =============================================================== -->
+
+    <color name="colorDisplayTextDarkT">#FFFFFF</color>
+    <color name="colorAppBackgroundDarkT">#E6000000</color>
+
+    <color name="colorPrimaryDarkDarkT">#025C66</color>
+    <color name="colorAccentDarkT">#D81B60</color>
+
+    <color name="colorPrimaryDarkT">#1E8076</color>
+
+    <color name="colorPlusButtonDarkT">#1976D2</color>
+    <color name="colorMultiplyButtonDarkT">#00796B</color>
+    <color name="colorDivideButtonDarkT">#C2185B</color>
+    <color name="colorMinusButtonDarkT">#D32F2F</color>
+    <color name="colorEqualButtonDarkT">#FBC02D</color>
+    <color name="colorPercentageButtonDarkT">#512DA8</color>
+
+    <color name="colorPlusButtonFocusDarkT">#9FA8DA</color>
+    <color name="colorMultiplyButtonFocusDarkT">#80CBC4</color>
+    <color name="colorDivideButtonFocusDarkT">#F48FB1</color>
+    <color name="colorMinusButtonFocusDarkT">#EF9A9A</color>
+    <color name="colorEqualButtonFocusDarkT">#FFE082</color>
+    <color name="colorPercentageButtonFocusDarkT">#B39DDB</color>
+    <color name="colorBackgroundDeleteButtonFocusDarkT">#EF9A9A</color>
+
+    <color name="colorBackgroundButtonDarkT">#D8305C30</color>
+    <color name="colorBackgroundOperationButtonDarkT">#DA2C777E</color>
+    <color name="colorBackgroundDeleteButtonDarkT">#D8702732</color>
+
+
+
+
+</resources>

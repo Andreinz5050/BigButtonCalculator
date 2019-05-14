@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+
+     <attr name="colorDisplayText" format="reference" />
+    <attr name="colorAppBackground" format="reference" />
+    <attr name="colorP" format="reference" />
+    <attr name="colorPDark" format="reference" />
+    <attr name="colorOutlineButton" format="reference" />
+
+    <attr name="buttonDelete" format="reference" />
+    <attr name="buttonNumber" format="reference" />
+    <attr name="buttonOperation" format="reference" />
+
+
+
+    <attr name="colorPlusButton" format="reference" />
+    <attr name="colorMultiplyButton" format="reference" />
+    <attr name="colorDivideButton" format="reference" />
+    <attr name="colorMinusButton" format="reference" />
+    <attr name="colorEqualButton" format="reference" />
+    <attr name="colorPercentageButton" format="reference" />
+
+    <attr name="colorBackgroundButton" format="reference" />
+    <attr name="colorBackgroundOperationButton" format="reference" />
+    <attr name="colorBackgroundDeleteButton" format="reference" />
+
+
+
+
+</resources>

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+            style="?colorAppBackground"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="right"
+            android:orientation="vertical"
+            android:weightSum="7"
+
+            tools:context=".MainActivity"
+
+            >
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:translationZ="0dp">
+
+
+
+            </android.support.v7.widget.Toolbar>
+
+             <android.support.v4.widget.DrawerLayout
+
+                android:id="@+id/drawer_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:gravity="right"
+                android:orientation="vertical"
+                android:padding="0dp">
+
+
+                <TextView
+                    android:id="@+id/operation_line"
+                    style="?colorDisplayText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:fontFamily="@font/ds"
+                    android:text="0"
+                    android:textSize="40sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/result_line"
+                    style="?colorDisplayText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:fontFamily="@font/ds"
+                    android:letterSpacing="-0.02"
+                    android:singleLine="true"
+                    android:text="0"
+                    android:textSize="70sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:gravity="bottom"
+                android:orientation="horizontal"
+                android:weightSum="4"
+                android:baselineAligned="false">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btn_delete"
+                        style="?buttonDelete"
+
+                        android:maxLines="1"
+                        android:onClick="resetClick"
+                        android:text="AC"
+
+                        />
+
+                    <Button
+                        android:id="@+id/btn_seven"
+                        style="?buttonNumber"
+
+
+                        android:onClick="onNumberClick"
+                        android:text="7"
+
+
+                        />
+
+                    <Button
+                        android:id="@+id/btn_four"
+                        style="?buttonNumber"
+
+                        android:onClick="onNumberClick"
+                        android:text="4" />
+
+                    <Button
+                        android:id="@+id/btn_one"
+
+                        style="?buttonNumber"
+
+                        android:onClick="onNumberClick"
+                        android:text="1" />
+
+                    <Button
+                        android:id="@+id/btn_zero"
+                        style="?buttonNumber"
+
+                        android:onClick="onNumberClick"
+                        android:text="0" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+                    <Button
+                        android:id="@+id/btn_percentage"
+                        style="@style/buttonOperationPercentageLight"
+
+
+                        android:text="%"
+
+
+                        />
+
+                    <Button
+                        android:id="@+id/btn_eight"
+                        style="?buttonNumber"
+
+                        android:onClick="onNumberClick"
+                        android:text="8"
+
+
+                        />
+
+                    <Button
+                        android:id="@+id/btn_five"
+                        style="?buttonNumber"
+
+                        android:onClick="onNumberClick"
+                        android:text="5" />
+
+                    <Button
+                        android:id="@+id/btn_two"
+                        style="?buttonNumber"
+
+                        android:onClick="onNumberClick"
+                        android:text="2" />
+
+
+                    <Button
+                        android:id="@+id/btn_dot"
+                        style="?buttonNumber"
+
+                        android:onClick="onNumberClick"
+                        android:text="."
+
+
+                        />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+                    <Button
+                        android:id="@+id/btn_divide"
+                        style="@style/buttonOperationDivideLight"
+
+                        android:text="/"
+
+                        />
+
+
+                    <Button
+                        android:id="@+id/btn_nine"
+                        style="?buttonNumber"
+
+                        android:onClick="onNumberClick"
+                        android:text="9"
+
+
+                        />
+
+                    <Button
+                        android:id="@+id/btn_six"
+                        style="?buttonNumber"
+
+                        android:onClick="onNumberClick"
+                        android:text="6"
+
+                        />
+
+                    <Button
+                        android:id="@+id/btn_three"
+                        style="?buttonNumber"
+
+                        android:onClick="onNumberClick"
+                        android:text="3"
+
+                        />
+
+
+                    <Button
+                        android:id="@+id/btn_back"
+                        style="?buttonDelete"
+
+                        android:onClick="backspaceClick"
+                        android:text="⬅" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:weightSum="5">
+
+
+                    <Button
+                        android:id="@+id/btn_multiple"
+                        style="@style/buttonOperationMultiplyLight"
+
+                        android:text="×" />
+
+                    <Button
+                        android:id="@+id/btn_minus"
+
+                        style="@style/buttonOperationMinusLight"
+
+
+                        android:text="-" />
+
+                    <Button
+                        android:id="@+id/btn_plus"
+                        style="@style/buttonOperationPlusLight"
+
+
+                        android:text="+" />
+
+
+                    <Button
+                        android:id="@+id/btn_equal"
+                        style="@style/buttonOperationEqualLight"
+
+                        android:text="="
+
+                        />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+    <ListView
+        android:id="@+id/navList"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left|start"
+        android:background="#ffeeeeee"/>
+
+    </android.support.v4.widget.DrawerLayout>
+
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+
+    <!-- Side navigation drawer UI -->
+
+

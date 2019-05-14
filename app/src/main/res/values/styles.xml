@@ -1,0 +1,306 @@
+<resources xmlns:fancy="http://schemas.android.com/apk/res/android">
+
+    <!-- Base application theme. -->
+
+
+
+
+    <!-- Specific Feed activity theme -->
+    <style name="FeedActivityThemeLight" parent="Theme.Material_Light" >
+        <item name="android:windowBackground">@color/colorAppBackground</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+    </style>
+    <style name="FeedActivityThemeDark" parent="Theme.Material_Dark">
+        <item name="android:windowBackground">@color/colorAppBackgroundDarkT</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+    </style>
+
+
+    <!-- This will set the fade in animation on all your activities by default -->
+    <style name="WindowAnimationTransition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
+
+
+
+    <style name="ButtonStyle" parent="@style/Widget.AppCompat.Button">
+        <item name="android:textSize">54sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+
+
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">2dp</item>
+
+        <item name="android:layout_margin">2dp</item>
+
+        <item name="android:layout_weight">1</item>
+
+
+
+        <item name="android:minHeight">55dp</item>
+
+
+    </style>
+
+
+    <style name="buttonDeleteLight" >
+
+        <item name="android:textSize">54sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:minHeight">55dp</item>
+
+        <item name="android:textColor">@color/colorDisplayText</item>
+
+        <item name="android:background">@drawable/button_main_delete</item>
+
+
+
+
+    </style>
+
+
+    <style name="buttonNumberLight" >
+
+        <item name="android:textSize">54sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:minHeight">55dp</item>
+
+        <item name="android:textColor">@color/colorDisplayText</item>
+
+        <item name="android:background">@drawable/button_main_number</item>
+
+
+    </style>
+
+    <style name="buttonOperationLight" >
+
+        <item name="android:onClick">onOperationClick</item>
+        <item name="android:textSize">54sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:minHeight">55dp</item>
+
+
+
+        <item name="android:background">@drawable/button_main_operation</item>
+
+    </style>
+
+    <style name="buttonOperationPercentageLight" parent="buttonOperationLight" >
+
+        <item name="android:textColor">@color/colorPercentageButton</item>
+        <item name="android:background">@drawable/button_main_operation_percentage</item>
+
+    </style>
+
+    <style name="buttonOperationDivideLight" parent="buttonOperationLight" >
+
+        <item name="android:textColor">@color/colorDivideButton</item>
+        <item name="android:background">@drawable/button_main_operation_divide</item>
+
+    </style>
+
+    <style name="buttonOperationMultiplyLight" parent="buttonOperationLight" >
+
+        <item name="android:textColor">@color/colorMultiplyButton</item>
+        <item name="android:background">@drawable/button_main_operation_multiple</item>
+
+    </style>
+
+    <style name="buttonOperationMinusLight" parent="buttonOperationLight" >
+
+        <item name="android:textColor">@color/colorMinusButton</item>
+        <item name="android:background">@drawable/button_main_operation_minus</item>
+
+    </style>
+
+    <style name="buttonOperationPlusLight" parent="buttonOperationLight" >
+
+        <item name="android:textColor">@color/colorPlusButton</item>
+        <item name="android:background">@drawable/button_main_operation_plus</item>
+
+    </style>
+
+    <style name="buttonOperationEqualLight" parent="buttonOperationLight" >
+
+
+        <item name="android:textSize">65sp</item>
+        <item name="android:layout_height">154sp</item>
+        <item name="android:layout_weight">2</item>
+        <item name="android:textColor">@color/colorEqualButton</item>
+        <item name="android:background">@drawable/button_main_operation_equal</item>
+
+    </style>
+
+    <!-- =============================================================== -->
+    <!-- Material-Light styles -->
+    <!-- =============================================================== -->
+
+
+    <style name="colorDisplayTextLight" >
+        <item name="android:textColor">@color/colorDisplayText</item>
+    </style>
+
+    <style name="colorAppBackgroundLight" >
+        <item name="android:background">@color/colorAppBackground</item>
+    </style>
+
+    <style name="colorPrimaryLight" >
+        <item name="android:background">@color/colorP</item>
+    </style>
+
+    <style name="colorPrimaryDarkLight" >
+        <item name="android:color">@color/colorPDark</item>
+    </style>
+
+
+
+    <style name="colorOutlineButtonLight" >
+        <item name="android:color">@color/colorDisplayText</item>
+    </style>
+
+
+
+    <style name="colorPlusButtonLight" >
+        <item name="android:color">@color/colorPlusButton</item>
+    </style>
+    <style name="colorMultiplyButtonLight" >
+        <item name="android:color">@color/colorMultiplyButton</item>
+    </style>
+    <style name="colorDivideButtonLight" >
+        <item name="android:color">@color/colorDivideButton</item>
+    </style>
+    <style name="colorMinusButtonLight" >
+        <item name="android:color">@color/colorPlusButton</item>
+    </style>
+    <style name="colorEqualButtonLight" >
+        <item name="android:color">@color/colorEqualButton</item>
+    </style>
+    <style name="colorPercentageButtonLight" >
+        <item name="android:color">@color/colorPercentageButton</item>
+    </style>
+
+
+    <style name="colorBackgroundButtonLight" >
+        <item name="android:color">@color/colorBackgroundButton</item>
+    </style>
+    <style name="colorBackgroundOperationButtonLight" >
+        <item name="android:color">@color/colorBackgroundOperationButton</item>
+    </style>
+    <style name="colorBackgroundDeleteButtonLight" >
+        <item name="android:color">@color/colorBackgroundDeleteButton</item>
+    </style>
+
+    <!-- =============================================================== -->
+    <!-- Material-Dark styles -->
+    <!-- =============================================================== -->
+
+    <style name="colorDisplayTextDarkT" >
+        <item name="android:textColor">@color/colorDisplayTextDarkT</item>
+    </style>
+
+    <style name="colorAppBackgroundDarkT" >
+        <item name="android:background">@color/colorAppBackgroundDarkT</item>
+    </style>
+
+    <style name="colorPrimaryDarkT" >
+        <item name="android:background">@color/colorPrimaryDarkT</item>
+    </style>
+
+    <style name="colorPrimaryDarkDarkT" >
+        <item name="android:color">@color/colorPrimaryDarkDarkT</item>
+    </style>
+
+
+
+    <style name="colorOutlineButtonDarkT" >
+        <item name="android:color">@color/colorDisplayTextDarkT</item>
+    </style>
+
+
+
+    <style name="colorPlusButtonDarkT" >
+        <item name="android:color">@color/colorPlusButtonDarkT</item>
+    </style>
+    <style name="colorMultiplyButtonDarkT" >
+        <item name="android:color">@color/colorMultiplyButtonDarkT</item>
+    </style>
+    <style name="colorDivideButtonDarkT" >
+        <item name="android:color">@color/colorDivideButtonDarkT</item>
+    </style>
+    <style name="colorMinusButtonDarkT" >
+        <item name="android:color">@color/colorPlusButtonDarkT</item>
+    </style>
+    <style name="colorEqualButtonDarkT" >
+        <item name="android:color">@color/colorEqualButtonDarkT</item>
+    </style>
+    <style name="colorPercentageButtonDarkT" >
+        <item name="android:color">@color/colorPercentageButtonDarkT</item>
+    </style>
+
+
+    <style name="colorBackgroundButtonDarkT" >
+        <item name="android:color">@color/colorBackgroundButtonDarkT</item>
+    </style>
+    <style name="colorBackgroundOperationButtonDarkT" >
+        <item name="android:color">@color/colorBackgroundOperationButtonDarkT</item>
+    </style>
+    <style name="colorBackgroundDeleteButtonDarkT" >
+        <item name="android:color">@color/colorBackgroundDeleteButtonDarkT</item>
+    </style>
+
+
+    <style name="buttonDeleteDarkT" >
+
+        <item name="android:textSize">54sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:minHeight">55dp</item>
+
+        <item name="android:textColor">@color/colorDisplayTextDarkT</item>
+
+        <item name="android:background">@drawable/button_main_delete</item>
+
+
+
+
+    </style>
+
+
+    <style name="buttonNumberDarkT" >
+
+        <item name="android:textSize">54sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:minHeight">55dp</item>
+
+        <item name="android:textColor">@color/colorDisplayTextDarkT</item>
+
+        <item name="android:background">@drawable/button_main_number</item>
+
+    </style>
+
+
+
+
+
+
+
+</resources>
