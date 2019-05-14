@@ -106,6 +106,7 @@ class MainActivity : AppCompatActivity() {
                             setTheme(R.style.FeedActivityThemeLight)
                             this@MainActivity.recreate()
                             supportActionBar!!.setHomeAsUpIndicator(menuAnimCrossToHam)
+
                             menuAnimCrossToHam!!.start()
                             mDrawerLayout!!.closeDrawer(Gravity.START, false)
                             operationLine!!.text = operationLineSave
