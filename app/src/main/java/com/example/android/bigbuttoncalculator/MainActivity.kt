@@ -2,10 +2,7 @@ package com.example.android.bigbuttoncalculator
 
 
 import android.content.res.Configuration
-import android.graphics.drawable.Animatable
-import android.graphics.drawable.AnimatedVectorDrawable
-import android.graphics.drawable.AnimationDrawable
-import android.graphics.drawable.Drawable
+import android.graphics.drawable.*
 import android.os.Bundle
 import android.support.graphics.drawable.AnimatedVectorDrawableCompat
 import android.support.v4.widget.DrawerLayout
@@ -44,11 +41,18 @@ class MainActivity : AppCompatActivity() {
     private var mDrawerLayout: DrawerLayout? = null
 
 
-    private val menuAnimHamToCross: AnimationDrawable?
-        get() = R.drawable.anim_btn_menu_ham_to_cross as AnimationDrawable
-    internal var myToolbar: Toolbar? = null
-    private val menuAnimCrossToHam: AnimationDrawable?
-        get() = R.drawable.anim_btn_menu_cross_to_ham as AnimationDrawable
+    private val menuAnimHamToCross: AnimatedVectorDrawable?
+        get() = getDrawable(R.drawable.anim_btn_menu_ham_to_cross) as AnimatedVectorDrawable
+    //internal var myToolbar: Toolbar? = null
+    private val menuAnimCrossToHam: AnimatedVectorDrawable?
+        get() = getDrawable(R.drawable.anim_btn_menu_cross_to_ham) as AnimatedVectorDrawable
+
+    private val startBtnMenu: VectorDrawable?
+        get() = getDrawable(R.drawable.start_btn_menu) as VectorDrawable
+
+    private val finishBtnMenu: VectorDrawable?
+        get() = getDrawable(R.drawable.finish_btn_menu) as VectorDrawable
+
 
     private var mMenuFlag = true
 
@@ -62,15 +66,14 @@ class MainActivity : AppCompatActivity() {
         operationLine = operation_line as TextView
         resultLine = result_line as TextView
 
-        myToolbar = toolbar as Toolbar
-        myToolbar!!.setNavigationIcon(R.drawable.start_btn_menu)
-//        setSupportActionBar(myToolbar)
+        //myToolbar = toolbar as Toolbar
+        //myToolbar!!.setNavigationIcon(R.drawable.start_btn_menu)
+        //setSupportActionBar(myToolbar)
 
 
         mDrawerLayout = drawer_layout as DrawerLayout
 
-       // menuAnimHamToCross = R.drawable.anim_btn_menu_ham_to_cross as AnimatedVectorDrawable
-        //menuAnimCrossToHam = R.drawable.anim_btn_menu_cross_to_ham as AnimatedVectorDrawable
+
 
 
         mDrawerList = navList as ListView
@@ -88,8 +91,9 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        supportActionBar!!.setHomeButtonEnabled(false)
-        //supportActionBar!!.setHomeAsUpIndicator(R.drawable.start_btn_menu)
+        supportActionBar!!.setHomeButtonEnabled(true)
+        supportActionBar!!.setHomeAsUpIndicator(startBtnMenu as VectorDrawable)
+
 
 
     }
@@ -193,10 +197,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun menuClick() {
         if (mMenuFlag) {
-            supportActionBar!!.setHomeAsUpIndicator(menuAnimHamToCross)
+            supportActionBar!!.setHomeAsUpIndicator(menuAnimHamToCross as AnimatedVectorDrawable)
             menuAnimHamToCross!!.start()
         } else {
-            supportActionBar!!.setHomeAsUpIndicator(menuAnimCrossToHam)
+            supportActionBar!!.setHomeAsUpIndicator(menuAnimCrossToHam as AnimatedVectorDrawable)
             menuAnimCrossToHam!!.start()
         }
         mMenuFlag = !mMenuFlag
@@ -237,13 +241,20 @@ class MainActivity : AppCompatActivity() {
 
         val s = button.text.toString()
         valueOne = valueOne!! + s
-        lastNumber + s
-        var valueOneWithoutLast = lastNumber!!.substring(0, lastNumber!!.length - 1)
+        lastNumber = lastNumber!! + s
+
+        var valueOneWithoutLast: String = ""
+
+
+        if (lastNumber!!.length > 1) {
+            valueOneWithoutLast = lastNumber!!.substring(0, lastNumber!!.length - 1)
+        }
+        var z = lastNumber!!.length
         if (lastNumber!!.length >= 2) {
             if (lastNumber!![lastNumber!!.length - 1] == '.' && lastNumber!![lastNumber!!.length - 2] == '.') {
                 valueOne = valueOne!!.substring(0, valueOne!!.length - 1)
                 lastNumber = lastNumber!!.substring(0, lastNumber!!.length - 1)
-            } else if (valueOneWithoutLast.contains(".") && s == ".") {
+            } else if (valueOneWithoutLast!!.contains(".") && s == ".") {
                 valueOne = valueOne!!.substring(0, valueOne!!.length - 1)
                 lastNumber = lastNumber!!.substring(0, lastNumber!!.length - 1)
             }
