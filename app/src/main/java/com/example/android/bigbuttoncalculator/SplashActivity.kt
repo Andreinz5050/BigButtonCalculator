@@ -3,32 +3,31 @@ package com.example.android.bigbuttoncalculator
 import android.app.Activity
 import android.content.Intent
 import android.graphics.drawable.Animatable
-import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.os.Handler
-import android.widget.ImageView
+import kotlinx.android.synthetic.main.splash_screen.*
 
 class SplashActivity : Activity() {
     //internal var vectorAnimation: AnimationDrawable? = null
     // Время в милесекундах, в течение которого будет отображаться Splash Screen
-    private val SPLASH_DISPLAY_LENGTH = 2000
+    private val SPLASH_DISPLAY_LENGTH = 2000L
 
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash_screen)
-        val imageView = findViewById(R.id.image) as ImageView
 
-        (imageView.drawable as Animatable).start()
+        (animatedImage.drawable as Animatable).start()
 
-
-
+        // По истечении времени, запускаем главный активити, а Splash Screen закрываем
         Handler().postDelayed({
-            // По истечении времени, запускаем главный активити, а Splash Screen закрываем
-            val mainIntent = Intent(this@SplashActivity, MainActivity::class.java)
-            this@SplashActivity.startActivity(mainIntent)
-            this@SplashActivity.finish()
-        }, SPLASH_DISPLAY_LENGTH.toLong())
+            showMainScreen()
+        }, SPLASH_DISPLAY_LENGTH)
+    }
+
+    private fun showMainScreen() {
+        startActivity(Intent(this, MainActivity::class.java) )
+        finish()
     }
 
 
