@@ -112,19 +112,20 @@ class MainActivity : AppCompatActivity() {
                         run {
                             setTheme(R.style.FeedActivityThemeLight)
                             this@MainActivity.recreate()
-                            supportActionBar!!.setHomeAsUpIndicator(menuAnimCrossToHam)
+                            //supportActionBar!!.setHomeAsUpIndicator(menuAnimCrossToHam)
 
-                            menuAnimCrossToHam!!.start()
-                            mDrawerLayout!!.closeDrawer(Gravity.START, false)
+                           // menuAnimCrossToHam?.start()
+                            //mDrawerLayout!!.closeDrawer(Gravity.START, false)
                             operationLine!!.text = operationLineSave
 
                         }
                         run {
                             setTheme(R.style.FeedActivityThemeDark)
+
                             this@MainActivity.recreate()
-                            supportActionBar!!.setHomeAsUpIndicator(menuAnimCrossToHam)
-                            menuAnimCrossToHam!!.start()
-                            mDrawerLayout!!.closeDrawer(Gravity.START, false)
+                            //supportActionBar!!.setHomeAsUpIndicator(menuAnimCrossToHam)
+                           // menuAnimCrossToHam!!.start()
+                            //mDrawerLayout!!.closeDrawer(Gravity.START, false)
                             operationLine!!.text = operationLineSave
 
                         }

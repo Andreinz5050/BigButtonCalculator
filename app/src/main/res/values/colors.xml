@@ -14,12 +14,12 @@
     <color name="colorDisplayText">#000000</color>
 
 
-    <color name="colorPlusButton">#1976D2</color>
-    <color name="colorMultiplyButton">#00796B</color>
-    <color name="colorDivideButton">#C2185B</color>
-    <color name="colorMinusButton">#D32F2F</color>
-    <color name="colorEqualButton">#FBC02D</color>
-    <color name="colorPercentageButton">#512DA8</color>
+    <color name="colorPlusButton">#0080FF</color>
+    <color name="colorMultiplyButton">#00BBA5</color>
+    <color name="colorDivideButton">#FF0064</color>
+    <color name="colorMinusButton">#FF0000</color>
+    <color name="colorEqualButton">#FFB700</color>
+    <color name="colorPercentageButton">#7E4CFC</color>
 
     <color name="colorPlusButtonFocus">#5C6BC0</color>
     <color name="colorMultiplyButtonFocus">#26A69A</color>
@@ -62,8 +62,8 @@
     <color name="colorPercentageButtonFocusDarkT">#B39DDB</color>
     <color name="colorBackgroundDeleteButtonFocusDarkT">#EF9A9A</color>
 
-    <color name="colorBackgroundButtonDarkT">#D8305C30</color>
-    <color name="colorBackgroundOperationButtonDarkT">#DA2C777E</color>
+    <color name="colorBackgroundButtonDarkT">#D8005231</color>
+    <color name="colorBackgroundOperationButtonDarkT">#004161</color>
     <color name="colorBackgroundDeleteButtonDarkT">#D8702732</color>
 
 
