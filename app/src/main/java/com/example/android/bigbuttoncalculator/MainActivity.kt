@@ -112,27 +112,32 @@ class MainActivity : AppCompatActivity() {
                         run {
                             setTheme(R.style.FeedActivityThemeLight)
                             this@MainActivity.recreate()
-                            supportActionBar!!.setHomeAsUpIndicator(menuAnimCrossToHam)
+                            //supportActionBar!!.setHomeAsUpIndicator(menuAnimCrossToHam)
 
-                           menuAnimCrossToHam?.start()
-                            mDrawerLayout!!.closeDrawer(Gravity.START, false)
+                           // menuAnimCrossToHam?.start()
+                            //mDrawerLayout!!.closeDrawer(Gravity.START, false)
                             operationLine!!.text = operationLineSave
-                            mMenuFlag = true
-
-
 
                         }
+                        run {
+                            setTheme(R.style.FeedActivityThemeDark)
 
+                            this@MainActivity.recreate()
+                            //supportActionBar!!.setHomeAsUpIndicator(menuAnimCrossToHam)
+                           // menuAnimCrossToHam!!.start()
+                            //mDrawerLayout!!.closeDrawer(Gravity.START, false)
+                            operationLine!!.text = operationLineSave
+
+                        }
                     }
 
                     1 -> run {
-                        this@MainActivity.setTheme(R.style.FeedActivityThemeDark)
+                        setTheme(R.style.FeedActivityThemeDark)
                         this@MainActivity.recreate()
-                       // supportActionBar!!.setHomeAsUpIndicator(menuAnimCrossToHam)
-                       // menuAnimCrossToHam!!.start()
+                        supportActionBar!!.setHomeAsUpIndicator(menuAnimCrossToHam)
+                        menuAnimCrossToHam!!.start()
                         mDrawerLayout!!.closeDrawer(Gravity.START, false)
                         operationLine!!.text = operationLineSave
-                        mMenuFlag = true
                     }
                 }
             }
@@ -146,7 +151,7 @@ class MainActivity : AppCompatActivity() {
                 /** Called when a drawer has settled in a completely open state.  */
                 override fun onDrawerOpened(drawerView: View) {
                     super.onDrawerOpened(drawerView)
-                    // getSupportActionBar()!!.setTitle("Navigation!");
+                    // getSupportActionBar().setTitle("Navigation!");
                     invalidateOptionsMenu() // creates call to onPrepareOptionsMenu()
                 }
 
@@ -159,7 +164,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         mDrawerToggle!!.isDrawerIndicatorEnabled = true
-        mDrawerToggle!!.setHomeAsUpIndicator(startBtnMenu as VectorDrawable)
+        mDrawerToggle!!.setHomeAsUpIndicator(R.drawable.start_btn_menu)
         mDrawerLayout!!.addDrawerListener(mDrawerToggle!!)
 
 
@@ -205,7 +210,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
+    // сохранение состояния
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString("OPERATION", lastOperation)
         if (resultLineSave != "")
@@ -236,11 +241,7 @@ class MainActivity : AppCompatActivity() {
         val button = view as Button
 
         val s = button.text.toString()
-        if(valueOne == null) {
-            valueOne = s
-        }
-        else
-        {valueOne = valueOne + s}
+        valueOne = valueOne!! + s
         lastNumber = lastNumber!! + s
 
         var valueOneWithoutLast: String = ""
@@ -367,10 +368,9 @@ class MainActivity : AppCompatActivity() {
 
         valueOne = ""
         operationLine!!.text = ""
-        resultLine!!.text = "0"
+        resultLine!!.text = ""
         lastOperation = "="
     }
-
 
 
     private fun performCalculation(st: String) {
