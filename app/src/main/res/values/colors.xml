@@ -19,7 +19,7 @@
     <color name="colorDivideButton">#FF0064</color>
     <color name="colorMinusButton">#FF0000</color>
     <color name="colorEqualButton">#FFB700</color>
-    <color name="colorPercentageButton">#9569FF</color>
+    <color name="colorPercentageButton">#7E4CFC</color>
 
     <color name="colorPlusButtonFocus">#5C6BC0</color>
     <color name="colorMultiplyButtonFocus">#26A69A</color>
