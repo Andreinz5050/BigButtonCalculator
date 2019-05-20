@@ -4,11 +4,8 @@ package com.example.android.bigbuttoncalculator
 import android.content.res.Configuration
 import android.graphics.drawable.*
 import android.os.Bundle
-import android.support.graphics.drawable.AnimatedVectorDrawableCompat
-import android.support.v4.widget.DrawerLayout
-import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
@@ -16,42 +13,30 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.ListView
-import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
 
-    internal var operationLine: TextView? = null
-    internal var resultLine: TextView? = null
-
-    internal var valueOne: String? = ""
-    internal var lastNumber: String? = ""
+    private var valueOne: String = ""
+    private var lastNumber: String = ""
 
 
-    internal var lastOperation: String? = "="
-    internal var resultLineSave = ""
+    private var lastOperation: String? = "="
+    private var resultLineSave = ""
     internal var operationLineSave = ""
 
 
-    private var mDrawerList: ListView? = null
-    private var mAdapter: ArrayAdapter<String>? = null
-    private var mDrawerToggle: ActionBarDrawerToggle? = null
-    private var mDrawerLayout: DrawerLayout? = null
+    private var menuAdapter: ArrayAdapter<String>? = null
+    private var drawerToggle: ActionBarDrawerToggle? = null
 
 
-    private val menuAnimHamToCross: AnimatedVectorDrawable?
-        get() = getDrawable(R.drawable.anim_btn_menu_ham_to_cross) as AnimatedVectorDrawable
-    //internal var myToolbar: Toolbar? = null
-    private val menuAnimCrossToHam: AnimatedVectorDrawable?
-        get() = getDrawable(R.drawable.anim_btn_menu_cross_to_ham) as AnimatedVectorDrawable
+    private lateinit var menuAnimHamToCross: AnimatedVectorDrawable
+    private lateinit var menuAnimCrossToHam: AnimatedVectorDrawable
+    private lateinit  var startBtnMenu: VectorDrawable
 
-    private val startBtnMenu: VectorDrawable?
-        get() = getDrawable(R.drawable.start_btn_menu) as VectorDrawable
 
-    private val finishBtnMenu: VectorDrawable?
-        get() = getDrawable(R.drawable.finish_btn_menu) as VectorDrawable
+    private lateinit var finishBtnMenu: VectorDrawable
 
 
     private var mMenuFlag = true
@@ -59,85 +44,52 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-
         setTheme(R.style.FeedActivityThemeLight)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        operationLine = operation_line as TextView
-        resultLine = result_line as TextView
 
-        //myToolbar = toolbar as Toolbar
-        //myToolbar!!.setNavigationIcon(R.drawable.start_btn_menu)
-        //setSupportActionBar(myToolbar)
-
-
-        mDrawerLayout = drawer_layout as DrawerLayout
-
-
-
-
-        mDrawerList = navList as ListView
-
-
-
+        menuAnimHamToCross = getDrawable(R.drawable.anim_btn_menu_ham_to_cross) as AnimatedVectorDrawable
+        menuAnimCrossToHam = getDrawable(R.drawable.anim_btn_menu_cross_to_ham) as AnimatedVectorDrawable
+        startBtnMenu = getDrawable(R.drawable.start_btn_menu) as VectorDrawable
+        finishBtnMenu = getDrawable(R.drawable.finish_btn_menu) as VectorDrawable
 
         addDrawerItems()
         setupDrawer()
 
-        if (supportActionBar != null) {
-            supportActionBar!!.setTitle("") // or whatever you want to use
+        supportActionBar?.run {
+            title = ""
+            setDisplayHomeAsUpEnabled(true)
+            setHomeButtonEnabled(true)
+            setHomeAsUpIndicator(startBtnMenu)
         }
-
-
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-
-        supportActionBar!!.setHomeButtonEnabled(true)
-        supportActionBar!!.setHomeAsUpIndicator(startBtnMenu as VectorDrawable)
-
-
 
     }
 
 
     private fun addDrawerItems() {
         val osArray = arrayOf("Light", "Dark")
-        mAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, osArray)
-        mDrawerList!!.adapter = mAdapter
+        menuAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, osArray)
+        drawerList.adapter = menuAdapter
 
-        mDrawerList!!.onItemClickListener = object : AdapterView.OnItemClickListener {
+        drawerList.onItemClickListener = object : AdapterView.OnItemClickListener {
             override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
 
                 when (position) {
                     0 -> {
-                        run {
-                            setTheme(R.style.FeedActivityThemeLight)
-                            this@MainActivity.recreate()
-                            //supportActionBar!!.setHomeAsUpIndicator(menuAnimCrossToHam)
+                        setTheme(R.style.FeedActivityThemeLight)
+                        supportActionBar?.setHomeAsUpIndicator(menuAnimCrossToHam)
 
-                           // menuAnimCrossToHam?.start()
-                            //mDrawerLayout!!.closeDrawer(Gravity.START, false)
-                            operationLine!!.text = operationLineSave
-
-                        }
-                        run {
-                            setTheme(R.style.FeedActivityThemeDark)
-
-                            this@MainActivity.recreate()
-                            //supportActionBar!!.setHomeAsUpIndicator(menuAnimCrossToHam)
-                           // menuAnimCrossToHam!!.start()
-                            //mDrawerLayout!!.closeDrawer(Gravity.START, false)
-                            operationLine!!.text = operationLineSave
-
-                        }
+                        menuAnimCrossToHam.start()
+                        drawerLayout.closeDrawer(Gravity.LEFT, false)
+                        operationLine.text = operationLineSave
                     }
 
-                    1 -> run {
+                    1 -> {
                         setTheme(R.style.FeedActivityThemeDark)
-                        this@MainActivity.recreate()
-                        supportActionBar!!.setHomeAsUpIndicator(menuAnimCrossToHam)
-                        menuAnimCrossToHam!!.start()
-                        mDrawerLayout!!.closeDrawer(Gravity.START, false)
-                        operationLine!!.text = operationLineSave
+                        supportActionBar?.setHomeAsUpIndicator(menuAnimCrossToHam)
+                        menuAnimCrossToHam.start()
+                        drawerLayout.closeDrawer(Gravity.LEFT, false)
+                        operationLine.text = operationLineSave
                     }
                 }
             }
@@ -145,41 +97,39 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupDrawer() {
-        mDrawerToggle =
-            object : ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
+        drawerToggle =
+            object : ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close) {
 
                 /** Called when a drawer has settled in a completely open state.  */
                 override fun onDrawerOpened(drawerView: View) {
                     super.onDrawerOpened(drawerView)
-                    // getSupportActionBar().setTitle("Navigation!");
                     invalidateOptionsMenu() // creates call to onPrepareOptionsMenu()
                 }
 
                 /** Called when a drawer has settled in a completely closed state.  */
                 override fun onDrawerClosed(view: View) {
                     super.onDrawerClosed(view)
-                    //getSupportActionBar().setTitle(mActivityTitle);
                     invalidateOptionsMenu() // creates call to onPrepareOptionsMenu()
                 }
             }
 
-        mDrawerToggle!!.isDrawerIndicatorEnabled = true
-        mDrawerToggle!!.setHomeAsUpIndicator(R.drawable.start_btn_menu)
-        mDrawerLayout!!.addDrawerListener(mDrawerToggle!!)
-
-
+        drawerToggle?.run {
+            isDrawerIndicatorEnabled = true
+            setHomeAsUpIndicator(R.drawable.start_btn_menu)
+            drawerLayout.addDrawerListener(this)
+        }
     }
 
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         // Sync the toggle state after onRestoreInstanceState has occurred.
-        mDrawerToggle!!.syncState()
+        drawerToggle?.syncState()
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        mDrawerToggle!!.onConfigurationChanged(newConfig)
+        drawerToggle?.onConfigurationChanged(newConfig)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -189,7 +139,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (mDrawerToggle!!.onOptionsItemSelected(item)) {
+        if (drawerToggle?.onOptionsItemSelected(item) == true) {
             menuClick()
             return true
         }
@@ -198,11 +148,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun menuClick() {
         if (mMenuFlag) {
-            supportActionBar!!.setHomeAsUpIndicator(menuAnimHamToCross as AnimatedVectorDrawable)
-            menuAnimHamToCross!!.start()
+            supportActionBar?.setHomeAsUpIndicator(menuAnimHamToCross)
+            menuAnimHamToCross.start()
         } else {
-            supportActionBar!!.setHomeAsUpIndicator(menuAnimCrossToHam as AnimatedVectorDrawable)
-            menuAnimCrossToHam!!.start()
+            supportActionBar?.setHomeAsUpIndicator(menuAnimCrossToHam)
+            menuAnimCrossToHam.start()
         }
         mMenuFlag = !mMenuFlag
 
@@ -242,22 +192,22 @@ class MainActivity : AppCompatActivity() {
 
         val s = button.text.toString()
         valueOne = valueOne!! + s
-        lastNumber = lastNumber!! + s
+        lastNumber += s
 
-        var valueOneWithoutLast: String = ""
+        var valueOneWithoutLast = ""
 
 
-        if (lastNumber!!.length > 1) {
-            valueOneWithoutLast = lastNumber!!.substring(0, lastNumber!!.length - 1)
+        if (lastNumber.length > 1) {
+            valueOneWithoutLast = lastNumber.substring(0, lastNumber.length - 1)
         }
-        var z = lastNumber!!.length
-        if (lastNumber!!.length >= 2) {
-            if (lastNumber!![lastNumber!!.length - 1] == '.' && lastNumber!![lastNumber!!.length - 2] == '.') {
-                valueOne = valueOne!!.substring(0, valueOne!!.length - 1)
-                lastNumber = lastNumber!!.substring(0, lastNumber!!.length - 1)
-            } else if (valueOneWithoutLast!!.contains(".") && s == ".") {
-                valueOne = valueOne!!.substring(0, valueOne!!.length - 1)
-                lastNumber = lastNumber!!.substring(0, lastNumber!!.length - 1)
+        var z = lastNumber.length
+        if (lastNumber.length >= 2) {
+            if (lastNumber[lastNumber.length - 1] == '.' && lastNumber[lastNumber.length - 2] == '.') {
+                valueOne = valueOne.substring(0, valueOne.length - 1)
+                lastNumber = lastNumber.substring(0, lastNumber.length - 1)
+            } else if (valueOneWithoutLast.contains(".") && s == ".") {
+                valueOne = valueOne.substring(0, valueOne.length - 1)
+                lastNumber = lastNumber.substring(0, lastNumber.length - 1)
             }
 
         }
