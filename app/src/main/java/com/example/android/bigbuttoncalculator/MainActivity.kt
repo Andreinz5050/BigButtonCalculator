@@ -4,6 +4,7 @@ package com.example.android.bigbuttoncalculator
 import android.content.res.Configuration
 import android.graphics.drawable.*
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Gravity
@@ -13,13 +14,18 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
+import com.google.firebase.FirebaseApp
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
 
-    private var valueOne: String? = ""
-    private var lastNumber: String? = ""
+    private var valueOne: String = ""
+    private var lastNumber: String = ""
 
 
     private var lastOperation: String? = "="
@@ -27,10 +33,8 @@ class MainActivity : AppCompatActivity() {
     internal var operationLineSave = ""
 
 
-//    private var mDrawerList: ListView? = null
     private var menuAdapter: ArrayAdapter<String>? = null
     private var drawerToggle: ActionBarDrawerToggle? = null
-//    private var mDrawerLayout: DrawerLayout? = null
 
 
     private lateinit var menuAnimHamToCross: AnimatedVectorDrawable
@@ -43,8 +47,31 @@ class MainActivity : AppCompatActivity() {
 
     private var mMenuFlag = true
 
+    //private var database = FirebaseDatabase.getInstance()
+    //private val myRef = database.getReference("message")
+    //val TAG = "MyMessage"
+
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        // Read from the database
+        /*myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val value = dataSnapshot.getValue(String::class.java)
+                Log.d(TAG, "Value is: $value")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException())
+            }
+        })*/
+
 
         setTheme(R.style.FeedActivityThemeLight)
         super.onCreate(savedInstanceState)
@@ -54,24 +81,6 @@ class MainActivity : AppCompatActivity() {
         menuAnimCrossToHam = getDrawable(R.drawable.anim_btn_menu_cross_to_ham) as AnimatedVectorDrawable
         startBtnMenu = getDrawable(R.drawable.start_btn_menu) as VectorDrawable
         finishBtnMenu = getDrawable(R.drawable.finish_btn_menu) as VectorDrawable
-
-//        operationLine = operation_line as TextView
-//        resultLine = result_line as TextView
-
-        //myToolbar = toolbar as Toolbar
-        //myToolbar!!.setNavigationIcon(R.drawable.start_btn_menu)
-        //setSupportActionBar(myToolbar)
-
-
-//        mDrawerLayout = drawer_layout as DrawerLayout
-
-
-
-
-//        mDrawerList = navList as ListView
-
-
-
 
         addDrawerItems()
         setupDrawer()
@@ -85,6 +94,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /*private fun initFirebase()
+    {
+        FirebaseApp.initializeApp(this)
+        val database = FirebaseDatabase.getInstance()
+    }
+*/
 
     private fun addDrawerItems() {
         val osArray = arrayOf("Light", "Dark")
@@ -97,7 +112,6 @@ class MainActivity : AppCompatActivity() {
                 when (position) {
                     0 -> {
                         setTheme(R.style.FeedActivityThemeLight)
-                        //this@MainActivity.recreate()
                         supportActionBar?.setHomeAsUpIndicator(menuAnimCrossToHam)
 
                         menuAnimCrossToHam.start()
@@ -107,7 +121,6 @@ class MainActivity : AppCompatActivity() {
 
                     1 -> {
                         setTheme(R.style.FeedActivityThemeDark)
-                        //this@MainActivity.recreate()
                         supportActionBar?.setHomeAsUpIndicator(menuAnimCrossToHam)
                         menuAnimCrossToHam.start()
                         drawerLayout.closeDrawer(Gravity.LEFT, false)
@@ -125,14 +138,12 @@ class MainActivity : AppCompatActivity() {
                 /** Called when a drawer has settled in a completely open state.  */
                 override fun onDrawerOpened(drawerView: View) {
                     super.onDrawerOpened(drawerView)
-                    // getSupportActionBar().setTitle("Navigation!");
                     invalidateOptionsMenu() // creates call to onPrepareOptionsMenu()
                 }
 
                 /** Called when a drawer has settled in a completely closed state.  */
                 override fun onDrawerClosed(view: View) {
                     super.onDrawerClosed(view)
-                    //getSupportActionBar().setTitle(mActivityTitle);
                     invalidateOptionsMenu() // creates call to onPrepareOptionsMenu()
                 }
             }
@@ -216,22 +227,22 @@ class MainActivity : AppCompatActivity() {
 
         val s = button.text.toString()
         valueOne = valueOne!! + s
-        lastNumber = lastNumber!! + s
+        lastNumber += s
 
-        var valueOneWithoutLast: String = ""
+        var valueOneWithoutLast = ""
 
 
-        if (lastNumber!!.length > 1) {
-            valueOneWithoutLast = lastNumber!!.substring(0, lastNumber!!.length - 1)
+        if (lastNumber.length > 1) {
+            valueOneWithoutLast = lastNumber.substring(0, lastNumber.length - 1)
         }
-        var z = lastNumber!!.length
-        if (lastNumber!!.length >= 2) {
-            if (lastNumber!![lastNumber!!.length - 1] == '.' && lastNumber!![lastNumber!!.length - 2] == '.') {
-                valueOne = valueOne!!.substring(0, valueOne!!.length - 1)
-                lastNumber = lastNumber!!.substring(0, lastNumber!!.length - 1)
-            } else if (valueOneWithoutLast!!.contains(".") && s == ".") {
-                valueOne = valueOne!!.substring(0, valueOne!!.length - 1)
-                lastNumber = lastNumber!!.substring(0, lastNumber!!.length - 1)
+        var z = lastNumber.length
+        if (lastNumber.length >= 2) {
+            if (lastNumber[lastNumber.length - 1] == '.' && lastNumber[lastNumber.length - 2] == '.') {
+                valueOne = valueOne.substring(0, valueOne.length - 1)
+                lastNumber = lastNumber.substring(0, lastNumber.length - 1)
+            } else if (valueOneWithoutLast.contains(".") && s == ".") {
+                valueOne = valueOne.substring(0, valueOne.length - 1)
+                lastNumber = lastNumber.substring(0, lastNumber.length - 1)
             }
 
         }

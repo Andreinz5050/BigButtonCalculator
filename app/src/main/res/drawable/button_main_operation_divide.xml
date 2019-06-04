@@ -1,4 +1,4 @@
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="@color/colorDivideButtonFocus">
+    android:color="@color/colorDivideButtonFocusDarkT">
     <item android:drawable="@drawable/button_operation" />
 </ripple>

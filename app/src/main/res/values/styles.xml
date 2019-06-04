@@ -47,6 +47,9 @@
 
     </style>
 
+    <!-- =============================================================== -->
+    <!-- Material-Light styles -->
+    <!-- =============================================================== -->
 
     <style name="buttonDeleteLight" >
 
@@ -145,9 +148,7 @@
 
     </style>
 
-    <!-- =============================================================== -->
-    <!-- Material-Light styles -->
-    <!-- =============================================================== -->
+
 
 
     <style name="colorDisplayTextLight" >
@@ -274,7 +275,7 @@
 
         <item name="android:textColor">@color/colorDisplayTextDarkT</item>
 
-        <item name="android:background">@drawable/button_main_delete</item>
+        <item name="android:background">@drawable/button_main_delete_dark</item>
 
 
 
@@ -293,9 +294,56 @@
 
         <item name="android:textColor">@color/colorDisplayTextDarkT</item>
 
-        <item name="android:background">@drawable/button_main_number</item>
+        <item name="android:background">@drawable/button_main_number_dark</item>
 
     </style>
+
+    <style name="buttonOperationPercentageDarkT" parent="buttonOperationLight" >
+
+        <item name="android:textColor">@color/colorPercentageButton</item>
+        <item name="android:background">@drawable/button_main_operation_percentage_dark</item>
+
+    </style>
+
+    <style name="buttonOperationDivideDarkT" parent="buttonOperationLight" >
+
+        <item name="android:textColor">@color/colorDivideButton</item>
+        <item name="android:background">@drawable/button_main_operation_divide_dark</item>
+
+    </style>
+
+    <style name="buttonOperationMultiplyDarkT" parent="buttonOperationLight" >
+
+        <item name="android:textColor">@color/colorMultiplyButton</item>
+        <item name="android:background">@drawable/button_main_operation_multiple_dark</item>
+
+    </style>
+
+    <style name="buttonOperationMinusDarkT" parent="buttonOperationLight" >
+
+        <item name="android:textColor">@color/colorMinusButton</item>
+        <item name="android:background">@drawable/button_main_operation_minus_dark</item>
+
+    </style>
+
+    <style name="buttonOperationPlusDarkT" parent="buttonOperationLight" >
+
+        <item name="android:textColor">@color/colorPlusButton</item>
+        <item name="android:background">@drawable/button_main_operation_plus_dark</item>
+
+    </style>
+
+    <style name="buttonOperationEqualDarkT" parent="buttonOperationLight" >
+
+
+        <item name="android:textSize">65sp</item>
+        <item name="android:layout_height">154sp</item>
+        <item name="android:layout_weight">2</item>
+        <item name="android:textColor">@color/colorEqualButton</item>
+        <item name="android:background">@drawable/button_main_operation_equal_dark</item>
+
+    </style>
+
 
 
 
