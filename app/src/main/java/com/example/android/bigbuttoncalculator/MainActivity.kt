@@ -226,7 +226,7 @@ class MainActivity : AppCompatActivity() {
         val button = view as Button
 
         val s = button.text.toString()
-        valueOne = valueOne!! + s
+        valueOne += s
         lastNumber += s
 
         var valueOneWithoutLast = ""
@@ -235,7 +235,7 @@ class MainActivity : AppCompatActivity() {
         if (lastNumber.length > 1) {
             valueOneWithoutLast = lastNumber.substring(0, lastNumber.length - 1)
         }
-        var z = lastNumber.length
+        //var z = lastNumber.length
         if (lastNumber.length >= 2) {
             if (lastNumber[lastNumber.length - 1] == '.' && lastNumber[lastNumber.length - 2] == '.') {
                 valueOne = valueOne.substring(0, valueOne.length - 1)
@@ -257,7 +257,7 @@ class MainActivity : AppCompatActivity() {
 
 
             try {
-                performCalculation(valueOne!!)
+                performCalculation(valueOne)
             } catch (ex: Exception) {
                 operationLine!!.text = ""
                 resultLine!!.text = ""
@@ -295,18 +295,18 @@ class MainActivity : AppCompatActivity() {
         } else if (lastOperation != "=") {
 
 
-            if (valueOne!![valueOne!!.length - 1] == '×' || valueOne!![valueOne!!.length - 1] == '/' || valueOne!![valueOne!!.length - 1] == '+'
-                || valueOne!![valueOne!!.length - 1] == '-' || valueOne!![valueOne!!.length - 1] == '%'
+            if (valueOne[valueOne.length - 1] == '×' || valueOne[valueOne.length - 1] == '/' || valueOne[valueOne.length - 1] == '+'
+                || valueOne[valueOne.length - 1] == '-' || valueOne[valueOne.length - 1] == '%'
             ) {
-                valueOne = valueOne!!.substring(0, valueOne!!.length - 1)
+                valueOne = valueOne.substring(0, valueOne.length - 1)
             }
-            valueOne = valueOne!! + lastOperation!!
+            valueOne += lastOperation!!
             operationLine!!.text = valueOne
 
         } else if (lastOperation != "=" && operationLine.toString() == "") {
 
 
-            operationLine!!.text = valueOne!! + lastOperation!!
+            operationLine!!.text = valueOne + lastOperation
 
             resultLine!!.text = ""
 
