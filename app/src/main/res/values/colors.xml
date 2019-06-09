@@ -16,8 +16,8 @@
 
     <color name="colorPlusButton">#0080FF</color>
     <color name="colorMultiplyButton">#00BBA5</color>
-    <color name="colorDivideButton">#FF0064</color>
-    <color name="colorMinusButton">#FF0000</color>
+    <color name="colorDivideButton">#FF2776</color>
+    <color name="colorMinusButton">#FF3838</color>
     <color name="colorEqualButton">#FFB700</color>
     <color name="colorPercentageButton">#7E4CFC</color>
 
@@ -39,20 +39,20 @@
     <!-- Material-Dark style colors -->
     <!-- =============================================================== -->
 
-    <color name="colorDisplayTextDarkT">#FFFFFF</color>
-    <color name="colorAppBackgroundDarkT">#E6000000</color>
+    <color name="colorDisplayTextDarkT">#EBEBEB</color>
+    <color name="colorAppBackgroundDarkT">#3C3C3C</color>
 
-    <color name="colorPrimaryDarkDarkT">#025C66</color>
+    <color name="colorPrimaryDarkT">#004640</color>
     <color name="colorAccentDarkT">#D81B60</color>
 
-    <color name="colorPrimaryDarkT">#1E8076</color>
+    <color name="colorPrimaryDarkTheme">#003531</color>
 
-    <color name="colorPlusButtonDarkT">#1976D2</color>
+    <color name="colorPlusButtonDarkT">#1E8DFA</color>
     <color name="colorMultiplyButtonDarkT">#00796B</color>
-    <color name="colorDivideButtonDarkT">#C2185B</color>
-    <color name="colorMinusButtonDarkT">#D32F2F</color>
+    <color name="colorDivideButtonDarkT">#E22B73</color>
+    <color name="colorMinusButtonDarkT">#F84343</color>
     <color name="colorEqualButtonDarkT">#FBC02D</color>
-    <color name="colorPercentageButtonDarkT">#512DA8</color>
+    <color name="colorPercentageButtonDarkT">#7B56D6</color>
 
     <color name="colorPlusButtonFocusDarkT">#9FA8DA</color>
     <color name="colorMultiplyButtonFocusDarkT">#80CBC4</color>
@@ -62,8 +62,8 @@
     <color name="colorPercentageButtonFocusDarkT">#B39DDB</color>
     <color name="colorBackgroundDeleteButtonFocusDarkT">#EF9A9A</color>
 
-    <color name="colorBackgroundButtonDarkT">#D8005231</color>
-    <color name="colorBackgroundOperationButtonDarkT">#004161</color>
+    <color name="colorBackgroundButtonDarkT">#D800613A</color>
+    <color name="colorBackgroundOperationButtonDarkT">#005781</color>
     <color name="colorBackgroundDeleteButtonDarkT">#D8702732</color>
 
 

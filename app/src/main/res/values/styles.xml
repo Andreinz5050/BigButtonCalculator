@@ -217,12 +217,12 @@
         <item name="android:background">@color/colorAppBackgroundDarkT</item>
     </style>
 
-    <style name="colorPrimaryDarkT" >
-        <item name="android:background">@color/colorPrimaryDarkT</item>
+    <style name="colorPrimaryDarkThemeStyle" >
+        <item name="android:background">@color/colorPrimaryDarkTheme</item>
     </style>
 
     <style name="colorPrimaryDarkDarkT" >
-        <item name="android:color">@color/colorPrimaryDarkDarkT</item>
+        <item name="android:color">@color/colorPrimaryDarkT</item>
     </style>
 
 

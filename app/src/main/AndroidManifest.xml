@@ -22,10 +22,16 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity"
+        <activity android:name=".LightActivity"
                   android:screenOrientation="portrait">
 
         </activity>
+        <activity android:name=".DarkActivity"
+                  android:screenOrientation="portrait">
+
+        </activity>
+
+
 
     </application>
 

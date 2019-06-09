@@ -1,55 +1,51 @@
 package com.example.android.bigbuttoncalculator
 
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.drawable.*
 import android.os.Bundle
-import android.util.Log
+
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Gravity
+
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
-import com.google.firebase.FirebaseApp
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import androidx.core.view.GravityCompat
+
 import kotlinx.android.synthetic.main.activity_main.*
 
+ abstract class MainActivity : AppCompatActivity() {
 
-class MainActivity : AppCompatActivity() {
-
-    private var valueOne: String = ""
-    private var lastNumber: String = ""
-
-
-    private var lastOperation: String? = "="
-    private var resultLineSave = ""
-    internal var operationLineSave = ""
+     protected var valueOne: String = ""
+     protected var lastNumber: String = ""
 
 
-    private var menuAdapter: ArrayAdapter<String>? = null
+     protected var lastOperation: String? = "="
+     protected var resultLineSave = ""
+     protected var operationLineSave = ""
+
+
+    protected var menuAdapter: ArrayAdapter<String>? = null
     private var drawerToggle: ActionBarDrawerToggle? = null
 
 
-    private lateinit var menuAnimHamToCross: AnimatedVectorDrawable
-    private lateinit var menuAnimCrossToHam: AnimatedVectorDrawable
-    private lateinit  var startBtnMenu: VectorDrawable
+     protected lateinit var menuAnimHamToCross: AnimatedVectorDrawable
+     protected lateinit var menuAnimCrossToHam: AnimatedVectorDrawable
+     protected lateinit  var startBtnMenu: VectorDrawable
 
 
-    private lateinit var finishBtnMenu: VectorDrawable
+     protected lateinit var finishBtnMenu: VectorDrawable
 
 
-    private var mMenuFlag = true
+     protected var mMenuFlag = true
 
-    //private var database = FirebaseDatabase.getInstance()
-    //private val myRef = database.getReference("message")
-    //val TAG = "MyMessage"
+    protected var isThemChanged = false
+
 
 
 
@@ -57,51 +53,19 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        // Read from the database
-        /*myRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                val value = dataSnapshot.getValue(String::class.java)
-                Log.d(TAG, "Value is: $value")
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException())
-            }
-        })*/
 
 
-        setTheme(R.style.FeedActivityThemeLight)
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        menuAnimHamToCross = getDrawable(R.drawable.anim_btn_menu_ham_to_cross) as AnimatedVectorDrawable
-        menuAnimCrossToHam = getDrawable(R.drawable.anim_btn_menu_cross_to_ham) as AnimatedVectorDrawable
-        startBtnMenu = getDrawable(R.drawable.start_btn_menu) as VectorDrawable
-        finishBtnMenu = getDrawable(R.drawable.finish_btn_menu) as VectorDrawable
-
-        addDrawerItems()
-        setupDrawer()
-
-        supportActionBar?.run {
-            title = ""
-            setDisplayHomeAsUpEnabled(true)
-            setHomeButtonEnabled(true)
-            setHomeAsUpIndicator(startBtnMenu)
-        }
 
     }
 
-    /*private fun initFirebase()
-    {
-        FirebaseApp.initializeApp(this)
-        val database = FirebaseDatabase.getInstance()
-    }
-*/
 
-    private fun addDrawerItems() {
+
+     protected fun addDrawerItems() {
         val osArray = arrayOf("Light", "Dark")
         menuAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, osArray)
         drawerList.adapter = menuAdapter
@@ -111,19 +75,22 @@ class MainActivity : AppCompatActivity() {
 
                 when (position) {
                     0 -> {
-                        setTheme(R.style.FeedActivityThemeLight)
+                        isThemChanged = true
+
+                        showLightTheme()
                         supportActionBar?.setHomeAsUpIndicator(menuAnimCrossToHam)
 
                         menuAnimCrossToHam.start()
-                        drawerLayout.closeDrawer(Gravity.LEFT, false)
+                        drawerLayout.closeDrawer(GravityCompat.START, false)
                         operationLine.text = operationLineSave
                     }
 
                     1 -> {
-                        setTheme(R.style.FeedActivityThemeDark)
+                        isThemChanged = true
+                        showDarkTheme()
                         supportActionBar?.setHomeAsUpIndicator(menuAnimCrossToHam)
                         menuAnimCrossToHam.start()
-                        drawerLayout.closeDrawer(Gravity.LEFT, false)
+                        drawerLayout.closeDrawer(GravityCompat.START, false)
                         operationLine.text = operationLineSave
                     }
                 }
@@ -131,7 +98,25 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupDrawer() {
+     protected fun showLightTheme() {
+         val a = Intent(this,LightActivity::class.java)
+         a.putExtra("RESULTLINE", resultLine!!.text)
+         a.putExtra("OPERATIONLINE", operationLine!!.text)
+         a.putExtra("OPERATION", lastOperation)
+         a.putExtra("VALUEONE", valueOne)
+         startActivity(a)
+         finish()
+     }
+     protected fun showDarkTheme() {
+         val a = Intent(this,DarkActivity::class.java)
+         a.putExtra("RESULTLINE", resultLine!!.text)
+         a.putExtra("OPERATIONLINE", operationLine!!.text)
+         a.putExtra("OPERATION", lastOperation)
+         a.putExtra("VALUEONE", valueOne)
+         startActivity(a)
+         finish()
+     }
+     protected fun setupDrawer() {
         drawerToggle =
             object : ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close) {
 
@@ -195,20 +180,21 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    // сохранение состояния
-    override fun onSaveInstanceState(outState: Bundle) {
-        outState.putString("OPERATION", lastOperation)
-        if (resultLineSave != "")
-            outState.putString("RESULTLINE", resultLineSave)
-        if (operationLineSave != "")
-            outState.putString("OPERATIONLINE", operationLineSave)
-        if (valueOne != "")
-            outState.putString("VALUEONE", valueOne)
+
+     protected  fun onChangeActivityExtract()
+     {
+
+         val extras = intent.extras
+         if (extras != null ) {
+             resultLine!!.text = extras.getString("RESULTLINE")
+             operationLine!!.text = extras.getString("OPERATIONLINE")
+             lastOperation = extras.getString("RESULTLINE")
+             valueOne = extras.getString("VALUEONE")
+         }
+
+     }
 
 
-
-        super.onSaveInstanceState(outState)
-    }
 
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
@@ -221,7 +207,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun onNumberClick(view: View) {
+    protected fun onNumberClick(view: View) {
 
         val button = view as Button
 
@@ -274,7 +260,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun onOperationClick(view: View) {
+     protected fun onOperationClick(view: View) {
 
         val button = view as Button
         lastOperation = button.text.toString()
@@ -323,7 +309,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun backspaceClick(view: View) {
+     protected fun backspaceClick(view: View) {
 
         var str = operationLine!!.text.toString()
         if (str != "") {
@@ -349,7 +335,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun resetClick(view: View) {
+     protected fun resetClick(view: View) {
 
         valueOne = ""
         operationLine!!.text = ""
@@ -358,7 +344,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun performCalculation(st: String) {
+     private fun performCalculation(st: String) {
         var tempString = st
         var ifNoZero: String
 

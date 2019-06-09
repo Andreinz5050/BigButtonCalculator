@@ -35,8 +35,8 @@
 
         <item name="colorDisplayText">@style/colorDisplayTextDarkT</item>
         <item name="colorAppBackground">@style/colorAppBackgroundDarkT</item>
-        <item name="colorPrimary">@style/colorPrimaryDarkT</item>
-        <item name="colorPrimaryDark">@style/colorPrimaryDarkT</item>
+        <item name="colorP">@style/colorPrimaryDarkThemeStyle</item>
+        <item name="colorPDark">@style/colorPrimaryDarkThemeStyle</item>
 
         <item name="colorOutlineButton">@style/colorOutlineButtonDarkT</item>
 

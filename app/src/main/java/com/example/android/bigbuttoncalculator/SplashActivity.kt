@@ -26,7 +26,7 @@ class SplashActivity : Activity() {
     }
 
     private fun showMainScreen() {
-        startActivity(Intent(this, MainActivity::class.java) )
+        startActivity(Intent(this, LightActivity::class.java) )
         finish()
     }
 
