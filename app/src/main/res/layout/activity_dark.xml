@@ -45,7 +45,7 @@
                     android:layout_height="wrap_content"
 
                     android:fontFamily="@font/ds"
-                    android:text="@string/_0"
+
                     android:textSize="40sp" />
 
             <View
@@ -62,7 +62,7 @@
                     android:fontFamily="@font/ds"
                     android:letterSpacing="-0.02"
                     android:singleLine="true"
-                    android:text="@string/_0"
+
                     android:textSize="70sp" />
 
         </LinearLayout>

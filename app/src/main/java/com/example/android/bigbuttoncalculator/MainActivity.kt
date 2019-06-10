@@ -26,7 +26,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
      protected var lastOperation: String? = "="
-     protected var resultLineSave = ""
      protected var operationLineSave = ""
 
 
@@ -166,7 +165,7 @@ import kotlinx.android.synthetic.main.activity_main.*
         return super.onOptionsItemSelected(item)
     }
 
-    private fun menuClick() {
+    fun menuClick() {
         if (mMenuFlag) {
             supportActionBar?.setHomeAsUpIndicator(menuAnimHamToCross)
             menuAnimHamToCross.start()
@@ -181,7 +180,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 
-     protected  fun onChangeActivityExtract()
+     fun onChangeActivityExtract()
      {
 
          val extras = intent.extras
@@ -207,7 +206,7 @@ import kotlinx.android.synthetic.main.activity_main.*
     }
 
 
-    protected fun onNumberClick(view: View) {
+     fun onNumberClick(view: View) {
 
         val button = view as Button
 
@@ -221,7 +220,7 @@ import kotlinx.android.synthetic.main.activity_main.*
         if (lastNumber.length > 1) {
             valueOneWithoutLast = lastNumber.substring(0, lastNumber.length - 1)
         }
-        //var z = lastNumber.length
+
         if (lastNumber.length >= 2) {
             if (lastNumber[lastNumber.length - 1] == '.' && lastNumber[lastNumber.length - 2] == '.') {
                 valueOne = valueOne.substring(0, valueOne.length - 1)
@@ -260,7 +259,7 @@ import kotlinx.android.synthetic.main.activity_main.*
     }
 
 
-     protected fun onOperationClick(view: View) {
+     fun onOperationClick(view: View) {
 
         val button = view as Button
         lastOperation = button.text.toString()
@@ -309,7 +308,7 @@ import kotlinx.android.synthetic.main.activity_main.*
     }
 
 
-     protected fun backspaceClick(view: View) {
+     fun backspaceClick(view: View) {
 
         var str = operationLine!!.text.toString()
         if (str != "") {
@@ -335,7 +334,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
     }
 
-     protected fun resetClick(view: View) {
+     fun resetClick(view: View) {
 
         valueOne = ""
         operationLine!!.text = ""
@@ -344,7 +343,7 @@ import kotlinx.android.synthetic.main.activity_main.*
     }
 
 
-     private fun performCalculation(st: String) {
+     fun performCalculation(st: String) {
         var tempString = st
         var ifNoZero: String
 
