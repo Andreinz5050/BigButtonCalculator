@@ -2,6 +2,9 @@
     <string name="app_name">Big Button Calculator</string>
     <string name="delete">\u1f838</string>
     <string name="action_settings">Themes</string>
+    <string name="settings">SETTINGS</string>
+    <string name="btn_sizing">BUTTON SIZING</string>
+    <string name="number_sizing">NUMBER SIZING</string>
 
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>

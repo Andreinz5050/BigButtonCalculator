@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/main_graph" app:startDestination="@id/splashFragment">
+
+    <fragment android:id="@+id/menuView" android:name="com.example.android.bigbuttoncalculator.MenuView"
+              android:label="MenuView"/>
+    <fragment android:id="@+id/lightFragment" android:name="com.example.android.bigbuttoncalculator.LightFragment"
+              android:label="LightFragment">
+        <action android:id="@+id/action_lightFragment_to_menuView" app:destination="@id/menuView"/>
+    </fragment>
+    <fragment android:id="@+id/darkActivity" android:name="com.example.android.bigbuttoncalculator.DarkFragment"
+              android:label="DarkActivity">
+        <action android:id="@+id/action_darkActivity_to_menuView" app:destination="@id/menuView"/>
+    </fragment>
+    <fragment android:id="@+id/splashFragment" android:name="com.example.android.bigbuttoncalculator.SplashFragment"
+              android:label="SplashFragment">
+        <action android:id="@+id/action_splashFragment_to_lightFragment" app:destination="@id/lightFragment"/>
+        <action android:id="@+id/action_splashFragment_to_darkActivity" app:destination="@id/darkActivity"/>
+    </fragment>
+</navigation>

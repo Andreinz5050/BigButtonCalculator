@@ -13,7 +13,7 @@
     >
 
         <activity
-                android:name=".SplashActivity"
+                android:name=".MainActivity"
                 android:screenOrientation="portrait"
                 android:label="@string/app_name" >
             <intent-filter>
@@ -22,14 +22,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".LightActivity"
-                  android:screenOrientation="portrait">
 
-        </activity>
-        <activity android:name=".DarkActivity"
-                  android:screenOrientation="portrait">
-
-        </activity>
 
 
 

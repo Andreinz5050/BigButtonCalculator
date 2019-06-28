@@ -1,26 +1,17 @@
 package com.example.android.bigbuttoncalculator
 
-import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.VectorDrawable
 import android.os.Bundle
-import android.view.Menu
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import androidx.core.view.GravityCompat
-import kotlinx.android.synthetic.main.activity_main.*
 
-
-class LightActivity : MainActivity() {
-
+class DarkFragment : ThemeClass(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_dark_fragment)
 
         menuAnimHamToCross = getDrawable(R.drawable.anim_btn_menu_ham_to_cross) as AnimatedVectorDrawable
         menuAnimCrossToHam = getDrawable(R.drawable.anim_btn_menu_cross_to_ham) as AnimatedVectorDrawable
@@ -37,15 +28,10 @@ class LightActivity : MainActivity() {
             setHomeAsUpIndicator(startBtnMenu)
         }
 
+
         onChangeActivityExtract()
-
-
     }
 
 
 
-
-    }
-
-
-
+}

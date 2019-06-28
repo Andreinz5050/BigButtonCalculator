@@ -3,15 +3,31 @@ package com.example.android.bigbuttoncalculator
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.VectorDrawable
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
 
-class DarkActivity : MainActivity(){
+
+class LightFragment : BaseThemeView() {
+
+
+
+    override fun onClick(v: View?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+
+
+     companion object {
+        fun newInstance() = LightFragment()
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_dark)
+        setContentView(R.layout.activity_main)
 
         menuAnimHamToCross = getDrawable(R.drawable.anim_btn_menu_ham_to_cross) as AnimatedVectorDrawable
         menuAnimCrossToHam = getDrawable(R.drawable.anim_btn_menu_cross_to_ham) as AnimatedVectorDrawable
@@ -28,10 +44,15 @@ class DarkActivity : MainActivity(){
             setHomeAsUpIndicator(startBtnMenu)
         }
 
-
         onChangeActivityExtract()
+
+
     }
 
 
 
-}
+
+    }
+
+
+
