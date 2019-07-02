@@ -3,19 +3,22 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/main_graph" app:startDestination="@id/splashFragment">
 
-    <fragment android:id="@+id/menuView" android:name="com.example.android.bigbuttoncalculator.MenuView"
-              android:label="MenuView"/>
-    <fragment android:id="@+id/lightFragment" android:name="com.example.android.bigbuttoncalculator.LightFragment"
-              android:label="LightFragment">
-        <action android:id="@+id/action_lightFragment_to_menuView" app:destination="@id/menuView"/>
-    </fragment>
-    <fragment android:id="@+id/darkActivity" android:name="com.example.android.bigbuttoncalculator.DarkFragment"
-              android:label="DarkActivity">
-        <action android:id="@+id/action_darkActivity_to_menuView" app:destination="@id/menuView"/>
-    </fragment>
     <fragment android:id="@+id/splashFragment" android:name="com.example.android.bigbuttoncalculator.SplashFragment"
               android:label="SplashFragment">
         <action android:id="@+id/action_splashFragment_to_lightFragment" app:destination="@id/lightFragment"/>
-        <action android:id="@+id/action_splashFragment_to_darkActivity" app:destination="@id/darkActivity"/>
+        <action android:id="@+id/action_splashFragment_to_darkFragment" app:destination="@id/darkFragment"/>
+    </fragment>
+    <fragment android:id="@+id/darkFragment" android:name="com.example.android.bigbuttoncalculator.DarkFragment"
+              android:label="DarkFragment">
+        <action android:id="@+id/action_darkFragment_to_menuFragment" app:destination="@id/menuFragment"/>
+    </fragment>
+    <fragment android:id="@+id/lightFragment" android:name="com.example.android.bigbuttoncalculator.LightFragment"
+              android:label="LightFragment">
+        <action android:id="@+id/action_lightFragment_to_menuFragment" app:destination="@id/menuFragment"/>
+    </fragment>
+    <fragment android:id="@+id/menuFragment" android:name="com.example.android.bigbuttoncalculator.MenuFragment"
+              android:label="MenuFragment">
+        <action android:id="@+id/action_menuFragment_to_darkFragment" app:destination="@id/darkFragment"/>
+        <action android:id="@+id/action_menuFragment_to_lightFragment" app:destination="@id/lightFragment"/>
     </fragment>
 </navigation>

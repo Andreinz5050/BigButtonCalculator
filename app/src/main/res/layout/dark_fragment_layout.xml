@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-                                                   xmlns:tools="http://schemas.android.com/tools"
 
-                                                   style="@style/colorAppBackgroundDarkT"
-                                                   android:layout_width="fill_parent"
-                                                   android:layout_height="fill_parent"
-                                                   android:gravity="end"
-                                                   android:orientation="vertical"
-                                                   android:weightSum="7"
 
-                                                   tools:context=".ThemeClass"
+                                                     style="@style/colorAppBackgroundDarkT"
+                                                     android:layout_width="fill_parent"
+                                                     android:layout_height="fill_parent"
+                                                     android:gravity="end"
+                                                     android:orientation="vertical"
+                                                     android:weightSum="7"
+
+
 
 >
 
@@ -295,4 +295,4 @@
     </androidx.drawerlayout.widget.DrawerLayout>
 
 
-</androidx.constraintlayout.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>

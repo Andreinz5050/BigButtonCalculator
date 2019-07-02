@@ -7,24 +7,21 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.ImageView
+
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.Fragment
 
-import kotlinx.android.synthetic.main.activity_light_fragment.*
 import javax.inject.Inject
 
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 
-abstract class BaseThemeView : Fragment(), View.OnClickListener {
+ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
+     @Inject
+     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    private lateinit var valueOne: String
+     private lateinit var valueOne: String
     private lateinit var lastNumber: String
 
 
@@ -51,38 +48,42 @@ abstract class BaseThemeView : Fragment(), View.OnClickListener {
     private lateinit var operationLine: TextView
     private lateinit var resultLine: TextView
 
-    private lateinit var zeroButton: ImageView
-    private lateinit var oneButton: ImageView
-    private lateinit var twoButton: ImageView
-    private lateinit var threeButton: ImageView
-    private lateinit var fourButton: ImageView
-    private lateinit var fiveButton: ImageView
-    private lateinit var sixButton: ImageView
-    private lateinit var sevenButton: ImageView
-    private lateinit var eightButton: ImageView
-    private lateinit var nineButton: ImageView
-    private lateinit var dotButton: ImageView
+    private lateinit var zeroButton: Button
+    private lateinit var oneButton: Button
+    private lateinit var twoButton: Button
+    private lateinit var threeButton: Button
+    private lateinit var fourButton: Button
+    private lateinit var fiveButton: Button
+    private lateinit var sixButton: Button
+    private lateinit var sevenButton: Button
+    private lateinit var eightButton: Button
+    private lateinit var nineButton: Button
+    private lateinit var dotButton: Button
 
-    private lateinit var backSpButton: ImageView
-    private lateinit var resetButton: ImageView
+    private lateinit var backSpButton: Button
+    private lateinit var resetButton: Button
 
-    private lateinit var percentageButton: ImageView
-    private lateinit var divideButton: ImageView
-    private lateinit var multiplyButton: ImageView
-    private lateinit var minusButton: ImageView
-    private lateinit var plusButton: ImageView
-    private lateinit var equalButton: ImageView
-
-
+    private lateinit var percentageButton: Button
+    private lateinit var divideButton: Button
+    private lateinit var multiplyButton: Button
+    private lateinit var minusButton: Button
+    private lateinit var plusButton: Button
+    private lateinit var equalButton: Button
 
 
-    private lateinit var viewModel: BaseThemeModel
+
+
+    private lateinit var viewModel: BaseThemeViewModel
+
+
+
+
 
 
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.activity_light_fragment, container, false)
+        val view = inflater.inflate(R.layout.light_fragment_layout, container, false)
         initializeFields(view)
         setUp()
 
@@ -93,21 +94,21 @@ abstract class BaseThemeView : Fragment(), View.OnClickListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(BaseThemeModel::class.java)
+
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(BaseThemeViewModel::class.java)
 
     }
 
-    fun upDateOperationLine(string: String)
+    fun upDateOperationAndResultLines(pair: Pair<String,String>)
     {
-        operationLine.text = string
+        operationLine.text = pair.first
+        resultLine.text = pair.second
     }
 
-    fun upDateResultLine(string: String)
-    {
-        resultLine.text = string
-    }
 
-    private fun initializeFields(view: View) {
+
+
+     fun initializeFields(view: View) {
         valueOne = ""
         lastNumber = ""
         lastOperation = ""
@@ -138,20 +139,20 @@ abstract class BaseThemeView : Fragment(), View.OnClickListener {
         plusButton = view.findViewById(R.id.btn_plus)
         equalButton = view.findViewById(R.id.btn_equal)
 
-        drawerToggle.run {
+        /*drawerToggle.run {
             isDrawerIndicatorEnabled = true
             setHomeAsUpIndicator(R.drawable.start_btn_menu)
             drawerLayout.addDrawerListener(this)
         }
 
-
+*/
 
     }
 
 
 
 
-    private fun setUp() {
+    fun setUp() {
         zeroButton.setOnClickListener(this)
         oneButton.setOnClickListener(this)
         twoButton.setOnClickListener(this)
@@ -178,27 +179,27 @@ abstract class BaseThemeView : Fragment(), View.OnClickListener {
     override fun onClick(view: View?) {
 
         when (view) {
-            zeroButton -> viewModel.onNumberClick(view)
-            oneButton -> viewModel.onNumberClick(view)
-            twoButton -> viewModel.onNumberClick(view)
-            threeButton -> viewModel.onNumberClick(view)
-            fourButton -> viewModel.onNumberClick(view)
-            fiveButton -> viewModel.onNumberClick(view)
-            sixButton -> viewModel.onNumberClick(view)
-            sevenButton -> viewModel.onNumberClick(view)
-            eightButton -> viewModel.onNumberClick(view)
-            nineButton -> viewModel.onNumberClick(view)
-            dotButton -> viewModel.onNumberClick(view)
+            zeroButton ->  upDateOperationAndResultLines(viewModel.onNumberClick(zeroButton.toString()))
+            oneButton -> upDateOperationAndResultLines(viewModel.onNumberClick(oneButton.toString()))
+            twoButton -> upDateOperationAndResultLines(viewModel.onNumberClick(twoButton.toString()))
+            threeButton -> upDateOperationAndResultLines(viewModel.onNumberClick(threeButton.toString()))
+            fourButton -> upDateOperationAndResultLines(viewModel.onNumberClick(fourButton.toString()))
+            fiveButton -> upDateOperationAndResultLines(viewModel.onNumberClick(fiveButton.toString()))
+            sixButton -> upDateOperationAndResultLines(viewModel.onNumberClick(sixButton.toString()))
+            sevenButton -> upDateOperationAndResultLines(viewModel.onNumberClick(sevenButton.toString()))
+            eightButton -> upDateOperationAndResultLines(viewModel.onNumberClick(eightButton.toString()))
+            nineButton -> upDateOperationAndResultLines(viewModel.onNumberClick(nineButton.toString()))
+            dotButton -> upDateOperationAndResultLines(viewModel.onNumberClick(dotButton.toString()))
 
-            backSpButton -> viewModel.backspaceClick(view)
-            resetButton -> viewModel.resetClick(view)
+            backSpButton -> upDateOperationAndResultLines(viewModel.backspaceClick())
+            resetButton -> upDateOperationAndResultLines(viewModel.resetClick())
 
-            percentageButton -> viewModel.onOperationClick(view)
-            divideButton -> viewModel.onOperationClick(view)
-            multiplyButton -> viewModel.onOperationClick(view)
-            minusButton -> viewModel.onOperationClick(view)
-            plusButton -> viewModel.onOperationClick(view)
-            equalButton -> viewModel.onOperationClick(view)
+            percentageButton -> upDateOperationAndResultLines(viewModel.onOperationClick(percentageButton.toString()))
+            divideButton -> upDateOperationAndResultLines(viewModel.onOperationClick(divideButton.toString()))
+            multiplyButton -> upDateOperationAndResultLines(viewModel.onOperationClick(multiplyButton.toString()))
+            minusButton -> upDateOperationAndResultLines(viewModel.onOperationClick(minusButton.toString()))
+            plusButton -> upDateOperationAndResultLines(viewModel.onOperationClick(plusButton.toString()))
+            equalButton -> upDateOperationAndResultLines(viewModel.onOperationClick(equalButton.toString()))
 
 
 
@@ -208,27 +209,4 @@ abstract class BaseThemeView : Fragment(), View.OnClickListener {
 
 
 
-    fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        onRestoreInstanceState(savedInstanceState)
-        lastOperation = savedInstanceState.getString("OPERATION")
-        valueOne = savedInstanceState.getString("VALUEONE")
-
-        resultLine.text = savedInstanceState.getString("RESULTLINE")
-        operationLine.text = savedInstanceState.getString("OPERATIONLINE")
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
+ }
