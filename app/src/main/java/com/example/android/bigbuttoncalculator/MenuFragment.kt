@@ -1,10 +1,13 @@
 package com.example.android.bigbuttoncalculator
 
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.Button
+import android.widget.Switch
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -13,15 +16,18 @@ import javax.inject.Inject
 
 class MenuFragment : Fragment(), View.OnClickListener {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+
 
 
     private lateinit var viewModel: MenuViewModel
 
 
-    private lateinit var lightThemeButton: ImageView
-    private lateinit var darkThemeButton: ImageView
+  lateinit var switchThemeButton: Switch
+    private lateinit var darkThemeButton: Button
+
+    private lateinit var lightThemeAnim: AnimatedVectorDrawable
+    private lateinit var darkThemeAnim: AnimatedVectorDrawable
+
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -36,36 +42,85 @@ class MenuFragment : Fragment(), View.OnClickListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(MenuViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(MenuViewModel::class.java)
 
     }
 
 
-    fun initializeFields(view: View) {
+    private fun initializeFields(view: View) {
 
 
-        lightThemeButton = view.findViewById(R.id.light_theme_button)
-        darkThemeButton = view.findViewById(R.id.dark_theme_button)
+
+        switchThemeButton = view.findViewById<Switch>(R.id.cooking_Switch_button).apply {
+            if (isChecked) {
+                setBackgroundResource(R.drawable.anim_btn_cooking_high_to_low)
+                lightThemeAnim = background as AnimatedVectorDrawable
+
+
+
+            } else {
+
+                setBackgroundResource(R.drawable.anim_btn_cooking_low_to_high)
+                darkThemeAnim = background as AnimatedVectorDrawable
+
+            }
+
+
+
+
+
+
+        }
 
 
     }
 
 
     fun setUp() {
-        lightThemeButton.setOnClickListener(this)
-        darkThemeButton.setOnClickListener(this)
+        switchThemeButton.setOnClickListener(this)
+        //darkThemeButton.setOnClickListener(this)
 
 
     }
 
-    override fun onClick(view: View?) {
+     override fun onClick(view: View?) {
 
-        when (view) {
-            lightThemeButton -> this.findNavController().navigate(R.id.lightFragment)
-            darkThemeButton -> this.findNavController().navigate(R.id.darkFragment)
+         switchThemeButton.setOnCheckedChangeListener { _, isChecked ->
+             if (isChecked)
+             {
+                 switchThemeButton.setBackground(lightThemeAnim)
+                 lightThemeAnim.start()
+                 Handler().postDelayed({
+
+                     this.findNavController().navigate(R.id.lightFragment)
+
+                 }, 700)
+
+             }
+             else
+             {
+                 switchThemeButton.setBackground(darkThemeAnim)
+                 darkThemeAnim.start()
+                 Handler().postDelayed({
+
+                     this.findNavController().navigate(R.id.darkFragment)
+
+                 }, 700)
+
+             }
+         }
+
+       /* when (view) {
+            switchThemeButton -> {
 
 
-        }
+
+
+            }
+
+
+
+        }*/
 
 
     }

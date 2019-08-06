@@ -21,7 +21,7 @@ class BaseThemeViewModel : ViewModel()
     private var lastNumber = ""
 
 
-    private var lastOperation = ""
+    private var lastOperation = "="
 
     private var result = ""
     private var toEvaluate = ""
@@ -144,7 +144,7 @@ class BaseThemeViewModel : ViewModel()
         if (str != "") {
             str = str.substring(0, str.length - 1)
             toEvaluate = str
-
+            valueOne = str
 
             try {
 
@@ -163,7 +163,7 @@ class BaseThemeViewModel : ViewModel()
             return Pair(toEvaluate,result)
         }
 
-        valueOne = str
+
 
 
     }

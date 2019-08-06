@@ -2,7 +2,7 @@
     <string name="app_name">Big Button Calculator</string>
     <string name="delete">\u1f838</string>
     <string name="action_settings">Themes</string>
-    <string name="settings">SETTINGS</string>
+    <string name="settings">INGREDIENTS</string>
     <string name="btn_sizing">BUTTON SIZING</string>
     <string name="number_sizing">NUMBER SIZING</string>
 
@@ -27,4 +27,5 @@
     <string name="_Minus">-</string>
     <string name="_Plus">+</string>
     <string name="_Equal">=</string>
+    <string name="themes">COOKING MODE</string>
 </resources>

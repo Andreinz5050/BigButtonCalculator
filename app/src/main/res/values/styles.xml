@@ -51,7 +51,7 @@
     <!-- Material-Light styles -->
     <!-- =============================================================== -->
 
-    <style name="buttonDeleteLight" >
+    <style name="buttonResetLight" >
 
         <item name="android:textSize">54sp</item>
         <item name="android:layout_width">match_parent</item>
@@ -60,9 +60,9 @@
         <item name="android:layout_weight">1</item>
         <item name="android:minHeight">55dp</item>
 
-        <item name="android:textColor">@color/colorDisplayText</item>
 
-        <item name="android:background">@drawable/button_main_delete</item>
+
+        <item name="android:background">@drawable/btn_reset</item>
 
 
 
@@ -89,54 +89,84 @@
     <style name="buttonOperationLight" >
 
         <item name="android:onClick">onOperationClick</item>
-        <item name="android:textSize">54sp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintWidth_percent">0.243</item>
+        <item name="layout_constraintHeight_percent">0.135</item>
         <item name="android:layout_margin">2dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:minHeight">55dp</item>
 
 
 
-        <item name="android:background">@drawable/button_main_operation</item>
+
+
+    </style>
+
+    <style name="buttonOperationResetLight" parent="buttonOperationLight" >
+
+        <item name="android:textColor">@color/colorDivideButton</item>
+        <item name="android:background">@drawable/btn_reset</item>
+
+    </style>
+
+    <style name="buttonOperationBackspaceLight" parent="buttonOperationLight" >
+
+        <item name="android:textColor">@color/colorDivideButton</item>
+        <item name="android:background">@drawable/btn_backspace</item>
 
     </style>
 
     <style name="buttonOperationPercentageLight" parent="buttonOperationLight" >
 
         <item name="android:textColor">@color/colorPercentageButton</item>
-        <item name="android:background">@drawable/button_main_operation_percentage</item>
+        <item name="android:background">@drawable/btn_percentage</item>
 
     </style>
 
     <style name="buttonOperationDivideLight" parent="buttonOperationLight" >
 
         <item name="android:textColor">@color/colorDivideButton</item>
-        <item name="android:background">@drawable/button_main_operation_divide</item>
+        <item name="android:background">@drawable/btn_division</item>
 
     </style>
 
     <style name="buttonOperationMultiplyLight" parent="buttonOperationLight" >
 
         <item name="android:textColor">@color/colorMultiplyButton</item>
-        <item name="android:background">@drawable/button_main_operation_multiple</item>
+        <item name="android:background">@drawable/btn_multiply</item>
 
     </style>
 
     <style name="buttonOperationMinusLight" parent="buttonOperationLight" >
 
-        <item name="android:textColor">@color/colorMinusButton</item>
-        <item name="android:background">@drawable/button_main_operation_minus</item>
+
+        <item name="android:background">@drawable/btn_minus</item>
 
     </style>
 
     <style name="buttonOperationPlusLight" parent="buttonOperationLight" >
 
-        <item name="android:textColor">@color/colorPlusButton</item>
-        <item name="android:background">@drawable/button_main_operation_plus</item>
+
+    <item name="android:background">@drawable/btn_plus</item>
 
     </style>
 
+    <style name="buttonDeleteDarkT" parent="buttonOperationLight" >
+
+
+        <item name="android:background">@drawable/btn_plus</item>
+
+    </style>
+
+
+    <style name="buttonDeleteLight" parent="buttonOperationLight" >
+
+
+        <item name="android:background">@drawable/btn_plus</item>
+
+    </style>
     <style name="buttonOperationEqualLight" parent="buttonOperationLight" >
 
 
@@ -264,18 +294,19 @@
     </style>
 
 
-    <style name="buttonDeleteDarkT" >
+    <style name="buttonBackspaceLight" >
 
         <item name="android:textSize">54sp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintWidth_percent">0.243</item>
+        <item name="layout_constraintHeight_percent">0.135</item>
         <item name="android:layout_margin">2dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:minHeight">55dp</item>
 
-        <item name="android:textColor">@color/colorDisplayTextDarkT</item>
 
-        <item name="android:background">@drawable/button_main_delete_dark</item>
+        <item name="android:background">@drawable/btn_backspace</item>
 
 
 
@@ -283,11 +314,180 @@
     </style>
 
 
+
+
+
+    <style name="buttonNumberZeroLight" >
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintWidth_percent">0.243</item>
+        <item name="layout_constraintHeight_percent">0.135</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">centerInside</item>
+
+        <item name="android:background">@drawable/btn_zero</item>
+
+    </style>
+
+    <style name="buttonNumberOneLight" >
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintWidth_percent">0.243</item>
+        <item name="layout_constraintHeight_percent">0.135</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">centerInside</item>
+
+        <item name="android:background">@drawable/btn_one</item>
+
+    </style>
+
+    <style name="buttonNumberTwoLight" >
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintWidth_percent">0.243</item>
+        <item name="layout_constraintHeight_percent">0.135</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">centerInside</item>
+
+        <item name="android:background">@drawable/btn_two</item>
+
+    </style>
+
+    <style name="buttonNumberThreeLight" >
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintWidth_percent">0.243</item>
+        <item name="layout_constraintHeight_percent">0.135</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">centerInside</item>
+
+        <item name="android:background">@drawable/btn_three</item>
+
+    </style>
+
+    <style name="buttonNumberFourLight" >
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintWidth_percent">0.243</item>
+        <item name="layout_constraintHeight_percent">0.135</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">centerInside</item>
+
+        <item name="android:background">@drawable/btn_four</item>
+
+    </style>
+
+    <style name="buttonNumberFiveLight" >
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintWidth_percent">0.243</item>
+        <item name="layout_constraintHeight_percent">0.135</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">centerInside</item>
+
+        <item name="android:background">@drawable/btn_five</item>
+
+    </style>
+
+    <style name="buttonNumberSixLight" >
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintWidth_percent">0.243</item>
+        <item name="layout_constraintHeight_percent">0.135</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">centerInside</item>
+
+        <item name="android:background">@drawable/btn_six</item>
+
+    </style>
+
+    <style name="buttonNumberSevenLight" >
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintWidth_percent">0.243</item>
+        <item name="layout_constraintHeight_percent">0.135</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">centerInside</item>
+
+        <item name="android:background">@drawable/btn_seven</item>
+
+    </style>
+
+    <style name="buttonNumberEightLight" >
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintWidth_percent">0.243</item>
+        <item name="layout_constraintHeight_percent">0.135</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">centerInside</item>
+
+        <item name="android:background">@drawable/btn_eight</item>
+
+    </style>
+    <style name="buttonNumberNineLight" >
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintWidth_percent">0.243</item>
+        <item name="layout_constraintHeight_percent">0.135</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">centerInside</item>
+
+        <item name="android:background">@drawable/btn_nine</item>
+
+    </style>
+
+    <style name="buttonNumberDotLight" >
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintWidth_percent">0.243</item>
+        <item name="layout_constraintHeight_percent">0.135</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">centerInside</item>
+
+        <item name="android:background">@drawable/btn_dot</item>
+
+    </style>
+
     <style name="buttonNumberDarkT" >
 
         <item name="android:textSize">54sp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintWidth_percent">0.243</item>
+        <item name="layout_constraintHeight_percent">0.135</item>
         <item name="android:layout_margin">2dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:minHeight">55dp</item>
@@ -337,12 +537,29 @@
 
 
         <item name="android:textSize">65sp</item>
-        <item name="android:layout_height">154sp</item>
-        <item name="android:layout_weight">2</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+
+        <item name="layout_constraintHeight_percent">0.275</item>
         <item name="android:textColor">@color/colorEqualButton</item>
-        <item name="android:background">@drawable/button_main_operation_equal_dark</item>
+        <item name="android:background">@drawable/btn_equal</item>
 
     </style>
+
+    <style name="buttonCooking"  >
+
+
+
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+
+        <item name="layout_constraintHeight_percent">0.21</item>
+        <item name="layout_constraintWidth_percent">0.35</item>
+
+        <item name="android:background">@drawable/switch_cooking</item>
+
+    </style>
+
 
 
 

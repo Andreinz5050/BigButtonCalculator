@@ -7,7 +7,7 @@
 
     <color name="colorToolBarBackground">#DFDFDF</color>
 
-    <color name="colorAppBackground">#FCFCFC</color>
+    <color name="colorAppBackground">#fff9eb</color>
     <color name="colorPDark">#2196F3</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorP">#26A69A</color>
@@ -40,7 +40,7 @@
     <!-- =============================================================== -->
 
     <color name="colorDisplayTextDarkT">#EBEBEB</color>
-    <color name="colorAppBackgroundDarkT">#3C3C3C</color>
+    <color name="colorAppBackgroundDarkT">#FFeBBd</color>
 
     <color name="colorPrimaryDarkT">#004640</color>
     <color name="colorAccentDarkT">#D81B60</color>

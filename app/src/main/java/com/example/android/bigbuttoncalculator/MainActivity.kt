@@ -3,6 +3,8 @@ package com.example.android.bigbuttoncalculator
 
 
 import android.os.Bundle
+import android.view.View
+import android.view.Window
 
 import androidx.appcompat.app.AppCompatActivity
 import dagger.android.DispatchingAndroidInjector
@@ -23,7 +25,8 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector  {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        setTitle(null)
+        getSupportActionBar()?.hide()
 
     }
 

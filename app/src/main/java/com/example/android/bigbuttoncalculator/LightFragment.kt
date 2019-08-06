@@ -18,6 +18,7 @@ class LightFragment : BaseThemeFragment(){
         setUp()
 
 
+
         return view
     }
 }
