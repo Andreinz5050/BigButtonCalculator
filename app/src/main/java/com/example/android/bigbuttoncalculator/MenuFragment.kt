@@ -23,7 +23,7 @@ class MenuFragment : Fragment(), View.OnClickListener {
 
 
   lateinit var switchThemeButton: Switch
-    private lateinit var darkThemeButton: Button
+
 
     private lateinit var lightThemeAnim: AnimatedVectorDrawable
     private lateinit var darkThemeAnim: AnimatedVectorDrawable

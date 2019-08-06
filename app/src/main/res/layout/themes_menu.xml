@@ -7,17 +7,14 @@
         android:layout_height="match_parent">
 
 
-
-
-
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" app:srcCompat="@drawable/img_cooking_mode"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/imageView" android:layout_marginTop="16dp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginEnd="24dp" android:layout_marginStart="24dp"/>
+            android:id="@+id/imageView"
+            android:layout_marginEnd="24dp" android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView"/>
     <Switch
             android:id="@+id/cooking_Switch_button"
             style="@style/buttonCooking"
@@ -27,4 +24,12 @@
             app:layout_constraintVertical_bias="0.60" app:layout_constraintHorizontal_bias="0.498"
 
     />
+    <TextView
+            android:text="COOKING MODE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView" android:layout_marginTop="32dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:textSize="36dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
