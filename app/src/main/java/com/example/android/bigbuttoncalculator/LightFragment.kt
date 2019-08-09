@@ -1,5 +1,6 @@
 package com.example.android.bigbuttoncalculator
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,9 +17,19 @@ class LightFragment : BaseThemeFragment(){
         val view = inflater.inflate(R.layout.light_fragment_layout, container, false)
         initializeFields(view)
         setUp()
+        passTheme()
 
 
 
         return view
+    }
+    fun passTheme()
+    {
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        with (sharedPref.edit()) {
+            putString("ISLIGHT","true")
+            apply()
+        }
+
     }
 }

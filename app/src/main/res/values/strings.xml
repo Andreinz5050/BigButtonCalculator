@@ -28,4 +28,5 @@
     <string name="_Plus">+</string>
     <string name="_Equal">=</string>
     <string name="themes">COOKING MODE</string>
+    <string name="cooking_mode">COOKING MODE</string>
 </resources>

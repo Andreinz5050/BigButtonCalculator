@@ -1,6 +1,8 @@
 package com.example.android.bigbuttoncalculator
 
+import android.content.Context
 import android.graphics.drawable.AnimatedVectorDrawable
+import android.graphics.drawable.VectorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -17,17 +19,19 @@ import javax.inject.Inject
 class MenuFragment : Fragment(), View.OnClickListener {
 
 
-
-
     private lateinit var viewModel: MenuViewModel
 
+    private var isLoadingThemeLight = true
 
-  lateinit var switchThemeButton: Switch
 
+    lateinit var switchThemeButton: Button
 
+    var count = 0
+
+    private lateinit var lightThemeFinish: VectorDrawable
+    private lateinit var darkThemeFinish: VectorDrawable
     private lateinit var lightThemeAnim: AnimatedVectorDrawable
     private lateinit var darkThemeAnim: AnimatedVectorDrawable
-
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -47,30 +51,36 @@ class MenuFragment : Fragment(), View.OnClickListener {
     }
 
 
+
+
     private fun initializeFields(view: View) {
 
 
 
-        switchThemeButton = view.findViewById<Switch>(R.id.cooking_Switch_button).apply {
-            if (isChecked) {
-                setBackgroundResource(R.drawable.anim_btn_cooking_high_to_low)
-                lightThemeAnim = background as AnimatedVectorDrawable
+
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+
+        isLoadingThemeLight = sharedPref.getString("ISLIGHT","true").toBoolean()
+
+        switchThemeButton = view.findViewById<Button>(R.id.cooking_Switch_button).apply {
 
 
+               if (isLoadingThemeLight) {
 
-            } else {
-
-                setBackgroundResource(R.drawable.anim_btn_cooking_low_to_high)
-                darkThemeAnim = background as AnimatedVectorDrawable
-
-            }
+                   setBackgroundResource(R.drawable.anim_btn_menu_cross_to_ham)
+                   darkThemeAnim = background as AnimatedVectorDrawable
 
 
+               } else {
 
 
+                   setBackgroundResource(R.drawable.anim_btn_menu_ham_to_cross)
+                   lightThemeAnim = background as AnimatedVectorDrawable
 
+               }
 
-        }
+           }
+
 
 
     }
@@ -78,39 +88,37 @@ class MenuFragment : Fragment(), View.OnClickListener {
 
     fun setUp() {
         switchThemeButton.setOnClickListener(this)
-        //darkThemeButton.setOnClickListener(this)
+
 
 
     }
 
-     override fun onClick(view: View?) {
+    override fun onClick(view: View?) {
 
-         switchThemeButton.setOnCheckedChangeListener { _, isChecked ->
-             if (isChecked)
-             {
-                 switchThemeButton.setBackground(lightThemeAnim)
-                 lightThemeAnim.start()
-                 Handler().postDelayed({
+        when (view) {
+            switchThemeButton -> {
+                if (isLoadingThemeLight) {
+                    switchThemeButton.setBackground(darkThemeAnim)
+                    darkThemeAnim.start()
+                    Handler().postDelayed({
+                        //switchThemeButton.setBackground(darkThemeFinish)
+                        this.findNavController().navigate(R.id.darkFragment)
 
-                     this.findNavController().navigate(R.id.lightFragment)
+                    }, 800)
 
-                 }, 700)
+                } else {
+                    switchThemeButton.setBackground(lightThemeAnim)
+                    lightThemeAnim.start()
+                    Handler().postDelayed({
+                        //switchThemeButton.setBackground(lightThemeFinish)
+                        this.findNavController().navigate(R.id.lightFragment)
+                        //CHANGED
+                    }, 800)
 
-             }
-             else
-             {
-                 switchThemeButton.setBackground(darkThemeAnim)
-                 darkThemeAnim.start()
-                 Handler().postDelayed({
+                }
 
-                     this.findNavController().navigate(R.id.darkFragment)
 
-                 }, 700)
-
-             }
-         }
-
-       /* when (view) {
+                /* when (view) {
             switchThemeButton -> {
 
 
@@ -122,6 +130,7 @@ class MenuFragment : Fragment(), View.OnClickListener {
 
         }*/
 
-
+            }
+        }
     }
 }
