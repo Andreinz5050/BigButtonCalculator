@@ -67,14 +67,14 @@ class MenuFragment : Fragment(), View.OnClickListener {
 
                if (isLoadingThemeLight) {
 
-                   setBackgroundResource(R.drawable.anim_btn_menu_cross_to_ham)
+                   setBackgroundResource(R.drawable.anim_btn_cooking_low_to_high)
                    darkThemeAnim = background as AnimatedVectorDrawable
 
 
                } else {
 
 
-                   setBackgroundResource(R.drawable.anim_btn_menu_ham_to_cross)
+                   setBackgroundResource(R.drawable.anim_btn_cooking_high_to_low)
                    lightThemeAnim = background as AnimatedVectorDrawable
 
                }
