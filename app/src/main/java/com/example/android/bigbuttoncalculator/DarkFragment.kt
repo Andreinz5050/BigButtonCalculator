@@ -25,11 +25,11 @@ class DarkFragment : BaseThemeFragment(){
         return view
     }
 
-     fun passTheme()
+    private fun passTheme()
     {
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
         with (sharedPref.edit()) {
-            putString("ISLIGHT","false")
+            putBoolean("ISLIGHT",false)
             apply()
         }
 
