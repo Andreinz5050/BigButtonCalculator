@@ -14,7 +14,7 @@
     <color name="colorDisplayText">#000000</color>
 
 
-    <color name="colorPlusButton">#0080FF</color>
+    <color name="colorPlusButton">#F1F5FA</color>
     <color name="colorMultiplyButton">#00BBA5</color>
     <color name="colorDivideButton">#FF2776</color>
     <color name="colorMinusButton">#FF3838</color>
