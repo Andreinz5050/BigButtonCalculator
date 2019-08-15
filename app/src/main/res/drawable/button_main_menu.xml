@@ -1,4 +1,0 @@
-<ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="@color/colorP">
-    <item android:drawable="@drawable/finish_btn_menu" />
-</ripple>

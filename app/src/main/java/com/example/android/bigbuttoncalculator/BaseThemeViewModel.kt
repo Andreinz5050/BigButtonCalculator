@@ -11,10 +11,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.lifecycle.ViewModel
 import javax.inject.Inject
 
-class BaseThemeViewModel : ViewModel()
-     {
-
-
+class BaseThemeViewModel : ViewModel() {
 
 
     private var valueOne = ""
@@ -27,8 +24,7 @@ class BaseThemeViewModel : ViewModel()
     private var toEvaluate = ""
 
 
-    fun onNumberClick(string: String): Pair<String,String>  {
-
+    fun onNumberClick(string: String): Pair<String, String> {
 
 
         val s = string
@@ -59,35 +55,33 @@ class BaseThemeViewModel : ViewModel()
 
         if (lastOperation == "=") {
             result = ""
-            return Pair(toEvaluate,result)
-        }
-        else if (lastOperation != "=") {
+            return Pair(toEvaluate, result)
+        } else if (lastOperation != "=") {
 
 
             try {
                 result = performCalculation(toEvaluate)
-                return Pair(toEvaluate,result)
+                return Pair(toEvaluate, result)
             } catch (ex: Exception) {
 
                 result = ""
                 toEvaluate = ""
-                return Pair(toEvaluate,result)
+                return Pair(toEvaluate, result)
             }
 
 
-        }
-        else {
+        } else {
 
 
             result = ""
-            return Pair(toEvaluate,result)
+            return Pair(toEvaluate, result)
 
         }
 
 
     }
 
-    fun onOperationClick(string: String): Pair<String,String> {
+    fun onOperationClick(string: String): Pair<String, String> {
 
         lastOperation = string
         lastNumber = ""
@@ -99,7 +93,7 @@ class BaseThemeViewModel : ViewModel()
 
             result = toEvaluate
             toEvaluate = ""
-             return Pair(toEvaluate, result)
+            return Pair(toEvaluate, result)
 
 
         } else if (lastOperation != "=" && valueOne == "") {
@@ -138,7 +132,7 @@ class BaseThemeViewModel : ViewModel()
 
     }
 
-    fun backspaceClick(): Pair<String,String> {
+    fun backspaceClick(): Pair<String, String> {
 
         var str = toEvaluate
         if (str != "") {
@@ -149,32 +143,30 @@ class BaseThemeViewModel : ViewModel()
             try {
 
                 result = performCalculation(str)
-                return Pair(toEvaluate,result)
+                return Pair(toEvaluate, result)
             } catch (ex: Exception) {
                 result = ""
                 toEvaluate = ""
-                return Pair(toEvaluate,result)
+                return Pair(toEvaluate, result)
             }
 
         } else {
             lastOperation = "="
             result = ""
             toEvaluate = ""
-            return Pair(toEvaluate,result)
+            return Pair(toEvaluate, result)
         }
-
-
 
 
     }
 
-    fun resetClick(): Pair<String,String> {
+    fun resetClick(): Pair<String, String> {
 
         valueOne = ""
         lastOperation = "="
         result = ""
         toEvaluate = ""
-        return Pair(toEvaluate,result)
+        return Pair(toEvaluate, result)
     }
 
     private fun performCalculation(st: String): String {

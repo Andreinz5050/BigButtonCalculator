@@ -1,7 +1,6 @@
 package com.example.android.bigbuttoncalculator
 
 
-
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.VectorDrawable
@@ -22,20 +21,16 @@ import javax.inject.Inject
 
 
 abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
-     @Inject
-     lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
-     private lateinit var valueOne: String
+
+    private lateinit var valueOne: String
     private lateinit var lastNumber: String
 
 
     private lateinit var lastOperation: String
     private lateinit var operationLineSave: String
-
-
-    private lateinit var menuAdapter: ArrayAdapter<String>
-    private lateinit var drawerToggle: ActionBarDrawerToggle
-
 
     private lateinit var btnZeroAnim: AnimatedVectorDrawable
     private lateinit var btnOneAnim: AnimatedVectorDrawable
@@ -60,20 +55,12 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
     private lateinit var btnResetAnim: AnimatedVectorDrawable
 
 
-
-
-    private var mMenuFlag = true
-
-    private var isThemChanged = false
-
-
-
     private lateinit var operationLine: TextView
     private lateinit var resultLine: TextView
 
 
-     private lateinit var menuButton: Button
-     private lateinit var zeroButton: Button
+    private lateinit var menuButton: Button
+    private lateinit var zeroButton: Button
     private lateinit var oneButton: Button
     private lateinit var twoButton: Button
     private lateinit var threeButton: Button
@@ -96,16 +83,7 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
     private lateinit var equalButton: Button
 
 
-
-
-
     private lateinit var viewModel: BaseThemeViewModel
-
-
-
-
-
-
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -123,18 +101,16 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
 
         viewModel = ViewModelProviders.of(this).get(BaseThemeViewModel::class.java)
 
+
     }
 
-    fun upDateOperationAndResultLines(pair: Pair<String,String>)
-    {
+    fun upDateOperationAndResultLines(pair: Pair<String, String>) {
         operationLine.text = pair.first
         resultLine.text = pair.second
     }
 
 
-
-
-     fun initializeFields(view: View) {
+    fun initializeFields(view: View) {
         valueOne = ""
         lastNumber = ""
         lastOperation = ""
@@ -143,15 +119,15 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
         resultLine = view.findViewById(R.id.resultLine)
         operationLine = view.findViewById(R.id.operationLine)
 
-         menuButton = view.findViewById(R.id.menuButton)
-         zeroButton = view.findViewById<Button>(R.id.btn_zero).apply {
-             setBackgroundResource(R.drawable.anim_btn_zero)
-             btnZeroAnim = background as AnimatedVectorDrawable
-         }
-         oneButton = view.findViewById<Button>(R.id.btn_one).apply {
-             setBackgroundResource(R.drawable.anim_btn_one)
-             btnOneAnim = background as AnimatedVectorDrawable
-         }
+        menuButton = view.findViewById(R.id.menuButton)
+        zeroButton = view.findViewById<Button>(R.id.btn_zero).apply {
+            setBackgroundResource(R.drawable.anim_btn_zero)
+            btnZeroAnim = background as AnimatedVectorDrawable
+        }
+        oneButton = view.findViewById<Button>(R.id.btn_one).apply {
+            setBackgroundResource(R.drawable.anim_btn_one)
+            btnOneAnim = background as AnimatedVectorDrawable
+        }
 
         twoButton = view.findViewById<Button>(R.id.btn_two).apply {
             setBackgroundResource(R.drawable.anim_btn_two)
@@ -207,7 +183,7 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
             setBackgroundResource(R.drawable.anim_btn_division)
             btnDivisionlAnim = background as AnimatedVectorDrawable
         }
-        multiplyButton= view.findViewById<Button>(R.id.btn_multiple).apply {
+        multiplyButton = view.findViewById<Button>(R.id.btn_multiple).apply {
             setBackgroundResource(R.drawable.anim_btn_multiply)
             btnMultiplyAnim = background as AnimatedVectorDrawable
         }
@@ -225,11 +201,7 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
         }
 
 
-
-
     }
-
-
 
 
     fun setUp() {
@@ -257,66 +229,65 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
         equalButton.setOnClickListener(this)
 
 
-
-
     }
+
     override fun onClick(view: View?) {
 
         when (view) {
 
-            zeroButton ->  {
+            zeroButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("0"))
                 zeroButton.setBackground(btnZeroAnim)
                 btnZeroAnim.start()
             }
-            oneButton->  {
+            oneButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("1"))
                 oneButton.setBackground(btnOneAnim)
                 btnOneAnim.start()
             }
-            twoButton->  {
+            twoButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("2"))
                 twoButton.setBackground(btnTwoAnim)
                 btnTwoAnim.start()
             }
-            threeButton->  {
+            threeButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("3"))
-               threeButton.setBackground(btnThreeAnim)
+                threeButton.setBackground(btnThreeAnim)
                 btnThreeAnim.start()
             }
-            fourButton->  {
+            fourButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("4"))
                 fourButton.setBackground(btnFourAnim)
                 btnFourAnim.start()
             }
-            fiveButton->  {
+            fiveButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("5"))
                 fiveButton.setBackground(btnFiveAnim)
                 btnFiveAnim.start()
             }
-            sixButton->  {
+            sixButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("6"))
                 sixButton.setBackground(btnSixAnim)
                 btnSixAnim.start()
             }
-            sevenButton->  {
+            sevenButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("7"))
                 sevenButton.setBackground(btnSevenAnim)
-               btnSevenAnim.start()
+                btnSevenAnim.start()
             }
-            eightButton->  {
+            eightButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("8"))
                 eightButton.setBackground(btnEightAnim)
                 btnEightAnim.start()
             }
-            nineButton->  {
+            nineButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("9"))
                 nineButton.setBackground(btnNineAnim)
                 btnNineAnim.start()
             }
-            dotButton->  {
+            dotButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("."))
-               dotButton.setBackground(btnDotAnim)
+                dotButton.setBackground(btnDotAnim)
                 btnDotAnim.start()
             }
 
@@ -356,7 +327,7 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
                 plusButton.setBackground(btnPluslAnim)
                 btnPluslAnim.start()
             }
-            equalButton->  {
+            equalButton -> {
                 upDateOperationAndResultLines(viewModel.onOperationClick("="))
                 equalButton.setBackground(btnEqualAnim)
                 btnEqualAnim.start()
@@ -367,6 +338,4 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
     }
 
 
-
-
- }
+}

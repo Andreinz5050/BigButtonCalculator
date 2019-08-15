@@ -3,17 +3,12 @@
     <!-- Base application theme. -->
 
 
-
-
     <!-- Specific Feed activity theme -->
-    <style name="FeedActivityThemeLight" parent="Theme.Material_Light" >
+    <style name="FeedActivityThemeLight" parent="Theme.AppCompat.Light" >
         <item name="android:windowBackground">@color/colorAppBackground</item>
-        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+
     </style>
-    <style name="FeedActivityThemeDark" parent="Theme.Material_Dark">
-        <item name="android:windowBackground">@color/colorAppBackgroundDarkT</item>
-        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
-    </style>
+
 
 
     <!-- This will set the fade in animation on all your activities by default -->
@@ -21,8 +16,6 @@
         <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
-
-
 
 
     <style name="ButtonStyle" parent="@style/Widget.AppCompat.Button">
@@ -41,7 +34,6 @@
         <item name="android:layout_weight">1</item>
 
 
-
         <item name="android:minHeight">55dp</item>
 
 
@@ -51,7 +43,7 @@
     <!-- Material-Light styles -->
     <!-- =============================================================== -->
 
-    <style name="buttonResetLight" >
+    <style name="buttonResetLight">
 
         <item name="android:textSize">54sp</item>
         <item name="android:layout_width">match_parent</item>
@@ -59,34 +51,15 @@
         <item name="android:layout_margin">2dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:minHeight">55dp</item>
-
 
 
         <item name="android:background">@drawable/btn_reset</item>
 
 
-
-
     </style>
 
 
-    <style name="buttonNumberLight" >
-
-        <item name="android:textSize">54sp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">2dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:minHeight">55dp</item>
-
-        <item name="android:textColor">@color/colorDisplayText</item>
-
-        <item name="android:background">@drawable/button_main_number</item>
-
-
-    </style>
-
-    <style name="buttonOperationLight" >
+    <style name="buttonOperationLight">
 
         <item name="android:onClick">onOperationClick</item>
 
@@ -99,61 +72,58 @@
         <item name="android:minHeight">55dp</item>
 
 
-
-
-
     </style>
 
-    <style name="buttonOperationResetLight" parent="buttonOperationLight" >
+    <style name="buttonOperationResetLight" parent="buttonOperationLight">
 
-        <item name="android:textColor">@color/colorDivideButton</item>
+
         <item name="android:background">@drawable/btn_reset</item>
 
     </style>
 
-    <style name="buttonOperationBackspaceLight" parent="buttonOperationLight" >
+    <style name="buttonOperationBackspaceLight" parent="buttonOperationLight">
 
-        <item name="android:textColor">@color/colorDivideButton</item>
+
         <item name="android:background">@drawable/btn_backspace</item>
 
     </style>
 
-    <style name="buttonOperationPercentageLight" parent="buttonOperationLight" >
+    <style name="buttonOperationPercentageLight" parent="buttonOperationLight">
 
-        <item name="android:textColor">@color/colorPercentageButton</item>
+
         <item name="android:background">@drawable/btn_percentage</item>
 
     </style>
 
-    <style name="buttonOperationDivideLight" parent="buttonOperationLight" >
+    <style name="buttonOperationDivideLight" parent="buttonOperationLight">
 
-        <item name="android:textColor">@color/colorDivideButton</item>
+
         <item name="android:background">@drawable/btn_division</item>
 
     </style>
 
-    <style name="buttonOperationMultiplyLight" parent="buttonOperationLight" >
+    <style name="buttonOperationMultiplyLight" parent="buttonOperationLight">
 
-        <item name="android:textColor">@color/colorMultiplyButton</item>
+
         <item name="android:background">@drawable/btn_multiply</item>
 
     </style>
 
-    <style name="buttonOperationMinusLight" parent="buttonOperationLight" >
+    <style name="buttonOperationMinusLight" parent="buttonOperationLight">
 
 
         <item name="android:background">@drawable/btn_minus</item>
 
     </style>
 
-    <style name="buttonOperationPlusLight" parent="buttonOperationLight" >
+    <style name="buttonOperationPlusLight" parent="buttonOperationLight">
 
 
-    <item name="android:background">@drawable/btn_plus</item>
+        <item name="android:background">@drawable/btn_plus</item>
 
     </style>
 
-    <style name="buttonDeleteDarkT" parent="buttonOperationLight" >
+    <style name="buttonDeleteDarkT" parent="buttonOperationLight">
 
 
         <item name="android:background">@drawable/btn_plus</item>
@@ -161,140 +131,45 @@
     </style>
 
 
-    <style name="buttonDeleteLight" parent="buttonOperationLight" >
+    <style name="buttonDeleteLight" parent="buttonOperationLight">
 
 
         <item name="android:background">@drawable/btn_plus</item>
 
     </style>
-    <style name="buttonOperationEqualLight" parent="buttonOperationLight" >
 
 
-        <item name="android:textSize">65sp</item>
-        <item name="android:layout_height">154sp</item>
-        <item name="android:layout_weight">2</item>
-        <item name="android:textColor">@color/colorEqualButton</item>
-        <item name="android:background">@drawable/button_main_operation_equal</item>
-
-    </style>
-
-
-
-
-    <style name="colorDisplayTextLight" >
+    <style name="colorDisplayTextLight">
         <item name="android:textColor">@color/colorDisplayText</item>
     </style>
 
-    <style name="colorAppBackgroundLight" >
+    <style name="colorAppBackgroundLight">
         <item name="android:background">@color/colorAppBackground</item>
     </style>
 
-    <style name="colorPrimaryLight" >
+    <style name="colorPrimaryLight">
         <item name="android:background">@color/colorP</item>
     </style>
 
-    <style name="colorPrimaryDarkLight" >
+    <style name="colorPrimaryDarkLight">
         <item name="android:color">@color/colorPDark</item>
     </style>
 
-
-
-    <style name="colorOutlineButtonLight" >
-        <item name="android:color">@color/colorDisplayText</item>
-    </style>
-
-
-
-    <style name="colorPlusButtonLight" >
-        <item name="android:color">@color/colorPlusButton</item>
-    </style>
-    <style name="colorMultiplyButtonLight" >
-        <item name="android:color">@color/colorMultiplyButton</item>
-    </style>
-    <style name="colorDivideButtonLight" >
-        <item name="android:color">@color/colorDivideButton</item>
-    </style>
-    <style name="colorMinusButtonLight" >
-        <item name="android:color">@color/colorPlusButton</item>
-    </style>
-    <style name="colorEqualButtonLight" >
-        <item name="android:color">@color/colorEqualButton</item>
-    </style>
-    <style name="colorPercentageButtonLight" >
-        <item name="android:color">@color/colorPercentageButton</item>
-    </style>
-
-
-    <style name="colorBackgroundButtonLight" >
-        <item name="android:color">@color/colorBackgroundButton</item>
-    </style>
-    <style name="colorBackgroundOperationButtonLight" >
-        <item name="android:color">@color/colorBackgroundOperationButton</item>
-    </style>
-    <style name="colorBackgroundDeleteButtonLight" >
-        <item name="android:color">@color/colorBackgroundDeleteButton</item>
-    </style>
 
     <!-- =============================================================== -->
     <!-- Material-Dark styles -->
     <!-- =============================================================== -->
 
-    <style name="colorDisplayTextDarkT" >
+    <style name="colorDisplayTextDarkT">
         <item name="android:textColor">@color/colorDisplayTextDarkT</item>
     </style>
 
-    <style name="colorAppBackgroundDarkT" >
+    <style name="colorAppBackgroundDarkT">
         <item name="android:background">@color/colorAppBackgroundDarkT</item>
     </style>
 
-    <style name="colorPrimaryDarkThemeStyle" >
-        <item name="android:background">@color/colorPrimaryDarkTheme</item>
-    </style>
 
-    <style name="colorPrimaryDarkDarkT" >
-        <item name="android:color">@color/colorPrimaryDarkT</item>
-    </style>
-
-
-
-    <style name="colorOutlineButtonDarkT" >
-        <item name="android:color">@color/colorDisplayTextDarkT</item>
-    </style>
-
-
-
-    <style name="colorPlusButtonDarkT" >
-        <item name="android:color">@color/colorPlusButtonDarkT</item>
-    </style>
-    <style name="colorMultiplyButtonDarkT" >
-        <item name="android:color">@color/colorMultiplyButtonDarkT</item>
-    </style>
-    <style name="colorDivideButtonDarkT" >
-        <item name="android:color">@color/colorDivideButtonDarkT</item>
-    </style>
-    <style name="colorMinusButtonDarkT" >
-        <item name="android:color">@color/colorPlusButtonDarkT</item>
-    </style>
-    <style name="colorEqualButtonDarkT" >
-        <item name="android:color">@color/colorEqualButtonDarkT</item>
-    </style>
-    <style name="colorPercentageButtonDarkT" >
-        <item name="android:color">@color/colorPercentageButtonDarkT</item>
-    </style>
-
-
-    <style name="colorBackgroundButtonDarkT" >
-        <item name="android:color">@color/colorBackgroundButtonDarkT</item>
-    </style>
-    <style name="colorBackgroundOperationButtonDarkT" >
-        <item name="android:color">@color/colorBackgroundOperationButtonDarkT</item>
-    </style>
-    <style name="colorBackgroundDeleteButtonDarkT" >
-        <item name="android:color">@color/colorBackgroundDeleteButtonDarkT</item>
-    </style>
-
-
-    <style name="buttonBackspaceLight" >
+    <style name="buttonBackspaceLight">
 
         <item name="android:textSize">54sp</item>
         <item name="android:layout_width">0dp</item>
@@ -309,15 +184,10 @@
         <item name="android:background">@drawable/btn_backspace</item>
 
 
-
-
     </style>
 
 
-
-
-
-    <style name="buttonNumberZeroLight" >
+    <style name="buttonNumberZeroLight">
 
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
@@ -332,7 +202,7 @@
 
     </style>
 
-    <style name="buttonNumberOneLight" >
+    <style name="buttonNumberOneLight">
 
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
@@ -347,7 +217,7 @@
 
     </style>
 
-    <style name="buttonNumberTwoLight" >
+    <style name="buttonNumberTwoLight">
 
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
@@ -362,7 +232,7 @@
 
     </style>
 
-    <style name="buttonNumberThreeLight" >
+    <style name="buttonNumberThreeLight">
 
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
@@ -377,7 +247,7 @@
 
     </style>
 
-    <style name="buttonNumberFourLight" >
+    <style name="buttonNumberFourLight">
 
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
@@ -392,7 +262,7 @@
 
     </style>
 
-    <style name="buttonNumberFiveLight" >
+    <style name="buttonNumberFiveLight">
 
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
@@ -407,7 +277,7 @@
 
     </style>
 
-    <style name="buttonNumberSixLight" >
+    <style name="buttonNumberSixLight">
 
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
@@ -422,7 +292,7 @@
 
     </style>
 
-    <style name="buttonNumberSevenLight" >
+    <style name="buttonNumberSevenLight">
 
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
@@ -437,7 +307,7 @@
 
     </style>
 
-    <style name="buttonNumberEightLight" >
+    <style name="buttonNumberEightLight">
 
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
@@ -451,7 +321,7 @@
         <item name="android:background">@drawable/btn_eight</item>
 
     </style>
-    <style name="buttonNumberNineLight" >
+    <style name="buttonNumberNineLight">
 
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
@@ -466,7 +336,7 @@
 
     </style>
 
-    <style name="buttonNumberDotLight" >
+    <style name="buttonNumberDotLight">
 
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>
@@ -481,7 +351,7 @@
 
     </style>
 
-    <style name="buttonNumberDarkT" >
+    <style name="buttonNumberDarkT">
 
         <item name="android:textSize">54sp</item>
         <item name="android:layout_width">0dp</item>
@@ -492,48 +362,10 @@
         <item name="android:layout_weight">1</item>
         <item name="android:minHeight">55dp</item>
 
-        <item name="android:textColor">@color/colorDisplayTextDarkT</item>
-
-        <item name="android:background">@drawable/button_main_number_dark</item>
 
     </style>
 
-    <style name="buttonOperationPercentageDarkT" parent="buttonOperationLight" >
-
-        <item name="android:textColor">@color/colorPercentageButton</item>
-        <item name="android:background">@drawable/button_main_operation_percentage_dark</item>
-
-    </style>
-
-    <style name="buttonOperationDivideDarkT" parent="buttonOperationLight" >
-
-        <item name="android:textColor">@color/colorDivideButton</item>
-        <item name="android:background">@drawable/button_main_operation_divide_dark</item>
-
-    </style>
-
-    <style name="buttonOperationMultiplyDarkT" parent="buttonOperationLight" >
-
-        <item name="android:textColor">@color/colorMultiplyButton</item>
-        <item name="android:background">@drawable/button_main_operation_multiple_dark</item>
-
-    </style>
-
-    <style name="buttonOperationMinusDarkT" parent="buttonOperationLight" >
-
-        <item name="android:textColor">@color/colorMinusButton</item>
-        <item name="android:background">@drawable/button_main_operation_minus_dark</item>
-
-    </style>
-
-    <style name="buttonOperationPlusDarkT" parent="buttonOperationLight" >
-
-        <item name="android:textColor">@color/colorPlusButton</item>
-        <item name="android:background">@drawable/button_main_operation_plus_dark</item>
-
-    </style>
-
-    <style name="buttonOperationEqualDarkT" parent="buttonOperationLight" >
+    <style name="buttonOperationEqualDarkT" parent="buttonOperationLight">
 
 
         <item name="android:textSize">65sp</item>
@@ -541,13 +373,12 @@
         <item name="android:layout_height">0dp</item>
 
         <item name="layout_constraintHeight_percent">0.275</item>
-        <item name="android:textColor">@color/colorEqualButton</item>
+
         <item name="android:background">@drawable/btn_equal</item>
 
     </style>
 
-    <style name="buttonCooking"  >
-
+    <style name="buttonCooking">
 
 
         <item name="android:layout_width">0dp</item>
@@ -557,15 +388,7 @@
         <item name="layout_constraintWidth_percent">0.5</item>
 
 
-
     </style>
-
-
-
-
-
-
-
 
 
 </resources>

@@ -18,7 +18,6 @@ class SplashFragment : Fragment() {
         inflater.inflate(R.layout.splash_screen, container, false)
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (animatedImage.drawable as Animatable).start()
@@ -28,8 +27,6 @@ class SplashFragment : Fragment() {
             }
         }, 8000)
     }
-
-
 
 
 }

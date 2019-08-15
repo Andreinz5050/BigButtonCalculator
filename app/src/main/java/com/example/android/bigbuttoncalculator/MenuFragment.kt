@@ -40,12 +40,12 @@ class MenuFragment : Fragment() {
         if (isLightTheme()) {
             switchThemeButton.setBackgroundResource(R.drawable.anim_btn_cooking_low_to_high)
 
-                (switchThemeButton.background as AnimatedVectorDrawable).reset()
+            (switchThemeButton.background as AnimatedVectorDrawable).reset()
 
         } else {
             switchThemeButton.setBackgroundResource(R.drawable.anim_btn_cooking_high_to_low)
 
-                (switchThemeButton.background as AnimatedVectorDrawable).reset()
+            (switchThemeButton.background as AnimatedVectorDrawable).reset()
 
         }
     }

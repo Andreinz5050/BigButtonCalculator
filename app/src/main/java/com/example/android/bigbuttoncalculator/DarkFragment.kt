@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-class DarkFragment : BaseThemeFragment(){
+class DarkFragment : BaseThemeFragment() {
 
 
     companion object {
@@ -25,11 +25,10 @@ class DarkFragment : BaseThemeFragment(){
         return view
     }
 
-    private fun passTheme()
-    {
+    private fun passTheme() {
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
-        with (sharedPref.edit()) {
-            putBoolean("ISLIGHT",false)
+        with(sharedPref.edit()) {
+            putBoolean("ISLIGHT", false)
             apply()
         }
 
