@@ -2,17 +2,16 @@ package com.example.android.bigbuttoncalculator
 
 
 import android.graphics.drawable.AnimatedVectorDrawable
-import android.graphics.drawable.AnimationDrawable
-import android.graphics.drawable.VectorDrawable
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
+
 import android.widget.Button
-import android.widget.ImageView
+
 import android.widget.TextView
-import androidx.appcompat.app.ActionBarDrawerToggle
+
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
