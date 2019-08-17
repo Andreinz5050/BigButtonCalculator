@@ -55,9 +55,9 @@ class MenuFragment : Fragment() {
         switchThemeButton.setOnClickListener {
             (switchThemeButton.background as AnimatedVectorDrawable).start()
             if (isLightTheme()) {
-                Handler().postDelayed({ this.findNavController().navigate(R.id.darkFragment) }, 800)
+                Handler().postDelayed({ this.findNavController().navigate(R.id.action_menuFragment_to_darkFragment) }, 800)
             } else {
-                Handler().postDelayed({ this.findNavController().navigate(R.id.lightFragment) }, 800)
+                Handler().postDelayed({ this.findNavController().navigate(R.id.action_menuFragment_to_lightFragment) }, 800)
             }
         }
     }

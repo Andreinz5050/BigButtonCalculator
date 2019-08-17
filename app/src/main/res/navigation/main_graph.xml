@@ -9,7 +9,7 @@
         <action android:id="@+id/action_splashFragment_to_lightFragment"
                 app:destination="@id/lightFragment"
                 app:popUpTo="@id/splashFragment"
-                app:popUpToInclusive="true"/>
+                app:popUpToInclusive="true" app:enterAnim="@anim/fade_in" app:exitAnim="@anim/fade_out"/>
         <action android:id="@+id/action_splashFragment_to_darkFragment"
                 app:destination="@id/darkFragment"
                 app:popUpTo="@id/splashFragment"
@@ -19,25 +19,24 @@
               android:name="com.example.android.bigbuttoncalculator.DarkFragment"
               android:label="DarkFragment">
         <action android:id="@+id/action_darkFragment_to_menuFragment"
-                app:destination="@id/menuFragment" app:enterAnim="@anim/fade_in"
-        />
+                app:destination="@id/menuFragment"
+                app:enterAnim="@anim/fade_in" app:exitAnim="@anim/fade_out"/>
     </fragment>
     <fragment android:id="@+id/lightFragment"
               android:name="com.example.android.bigbuttoncalculator.LightFragment"
               android:label="LightFragment">
         <action android:id="@+id/action_lightFragment_to_menuFragment"
                 app:destination="@id/menuFragment"
-                app:enterAnim="@anim/fragment_fade_enter" app:exitAnim="@anim/fragment_fade_exit"
-                app:popEnterAnim="@anim/fragment_open_enter" app:popExitAnim="@anim/fragment_open_exit"/>
+                app:enterAnim="@anim/fade_in" app:exitAnim="@anim/fade_out"/>
     </fragment>
     <fragment android:id="@+id/menuFragment"
               android:name="com.example.android.bigbuttoncalculator.MenuFragment"
               android:label="MenuFragment">
         <action android:id="@+id/action_menuFragment_to_darkFragment"
                 app:destination="@id/darkFragment"
-                app:enterAnim="@anim/fade_in"/>
+                app:enterAnim="@anim/fade_in" app:exitAnim="@anim/fade_out"/>
         <action android:id="@+id/action_menuFragment_to_lightFragment"
                 app:destination="@id/lightFragment"
-                app:enterAnim="@anim/fade_in"/>
+                app:enterAnim="@anim/fade_in" app:exitAnim="@anim/fade_out"/>
     </fragment>
 </navigation>

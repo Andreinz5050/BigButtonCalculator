@@ -58,7 +58,7 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
     private lateinit var resultLine: TextView
 
 
-    private lateinit var menuButton: Button
+    lateinit var menuButton: Button
     private lateinit var zeroButton: Button
     private lateinit var oneButton: Button
     private lateinit var twoButton: Button
@@ -219,7 +219,7 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
         backSpButton.setOnClickListener(this)
         resetButton.setOnClickListener(this)
 
-        menuButton.setOnClickListener { this.findNavController().navigate(R.id.menuFragment) }
+        menuButton.setOnClickListener { this.findNavController().navigate(R.id.action_lightFragment_to_menuFragment) }
         percentageButton.setOnClickListener(this)
         divideButton.setOnClickListener(this)
         multiplyButton.setOnClickListener(this)

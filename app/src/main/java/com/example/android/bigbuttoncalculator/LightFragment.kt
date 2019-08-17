@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 
 class LightFragment : BaseThemeFragment() {
 
@@ -17,6 +18,7 @@ class LightFragment : BaseThemeFragment() {
         val view = inflater.inflate(R.layout.light_fragment_layout, container, false)
         initializeFields(view)
         setUp()
+        menuButton.setOnClickListener { this.findNavController().navigate(R.id.action_lightFragment_to_menuFragment) }
         passTheme()
 
 
