@@ -2,7 +2,7 @@ package com.example.android.bigbuttoncalculator
 
 import android.content.Context
 import android.graphics.drawable.AnimatedVectorDrawable
-import android.os.Build
+
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -55,9 +55,15 @@ class MenuFragment : Fragment() {
         switchThemeButton.setOnClickListener {
             (switchThemeButton.background as AnimatedVectorDrawable).start()
             if (isLightTheme()) {
-                Handler().postDelayed({ this.findNavController().navigate(R.id.action_menuFragment_to_darkFragment) }, 800)
+                Handler().postDelayed(
+                    { this.findNavController().navigate(R.id.action_menuFragment_to_darkFragment) },
+                    800
+                )
             } else {
-                Handler().postDelayed({ this.findNavController().navigate(R.id.action_menuFragment_to_lightFragment) }, 800)
+                Handler().postDelayed(
+                    { this.findNavController().navigate(R.id.action_menuFragment_to_lightFragment) },
+                    800
+                )
             }
         }
     }

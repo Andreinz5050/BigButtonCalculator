@@ -7,21 +7,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import android.widget.Button
-
 import android.widget.TextView
-
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.*
 import androidx.navigation.fragment.findNavController
-import javax.inject.Inject
 
 
 abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
 
 
     private lateinit var valueOne: String
@@ -30,29 +23,6 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
 
     private lateinit var lastOperation: String
     private lateinit var operationLineSave: String
-
-    private lateinit var btnZeroAnim: AnimatedVectorDrawable
-    private lateinit var btnOneAnim: AnimatedVectorDrawable
-    private lateinit var btnTwoAnim: AnimatedVectorDrawable
-    private lateinit var btnThreeAnim: AnimatedVectorDrawable
-    private lateinit var btnFourAnim: AnimatedVectorDrawable
-    private lateinit var btnFiveAnim: AnimatedVectorDrawable
-    private lateinit var btnSixAnim: AnimatedVectorDrawable
-    private lateinit var btnSevenAnim: AnimatedVectorDrawable
-    private lateinit var btnEightAnim: AnimatedVectorDrawable
-    private lateinit var btnNineAnim: AnimatedVectorDrawable
-    private lateinit var btnDotAnim: AnimatedVectorDrawable
-
-    private lateinit var btnEqualAnim: AnimatedVectorDrawable
-    private lateinit var btnPluslAnim: AnimatedVectorDrawable
-    private lateinit var btnMinuslAnim: AnimatedVectorDrawable
-    private lateinit var btnMultiplyAnim: AnimatedVectorDrawable
-    private lateinit var btnDivisionlAnim: AnimatedVectorDrawable
-    private lateinit var btnPercentlAnim: AnimatedVectorDrawable
-
-    private lateinit var btnBackspaceAnim: AnimatedVectorDrawable
-    private lateinit var btnResetAnim: AnimatedVectorDrawable
-
 
     private lateinit var operationLine: TextView
     private lateinit var resultLine: TextView
@@ -100,7 +70,6 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
 
         viewModel = ViewModelProviders.of(this).get(BaseThemeViewModel::class.java)
 
-
     }
 
     fun upDateOperationAndResultLines(pair: Pair<String, String>) {
@@ -121,82 +90,82 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
         menuButton = view.findViewById(R.id.menuButton)
         zeroButton = view.findViewById<Button>(R.id.btn_zero).apply {
             setBackgroundResource(R.drawable.anim_btn_zero)
-            btnZeroAnim = background as AnimatedVectorDrawable
+
         }
         oneButton = view.findViewById<Button>(R.id.btn_one).apply {
             setBackgroundResource(R.drawable.anim_btn_one)
-            btnOneAnim = background as AnimatedVectorDrawable
+
         }
 
         twoButton = view.findViewById<Button>(R.id.btn_two).apply {
             setBackgroundResource(R.drawable.anim_btn_two)
-            btnTwoAnim = background as AnimatedVectorDrawable
+
         }
         threeButton = view.findViewById<Button>(R.id.btn_three).apply {
             setBackgroundResource(R.drawable.anim_btn_three)
-            btnThreeAnim = background as AnimatedVectorDrawable
+
         }
         fourButton = view.findViewById<Button>(R.id.btn_four).apply {
             setBackgroundResource(R.drawable.anim_btn_four)
-            btnFourAnim = background as AnimatedVectorDrawable
+
         }
         fiveButton = view.findViewById<Button>(R.id.btn_five).apply {
             setBackgroundResource(R.drawable.anim_btn_five)
-            btnFiveAnim = background as AnimatedVectorDrawable
+
         }
         sixButton = view.findViewById<Button>(R.id.btn_six).apply {
             setBackgroundResource(R.drawable.anim_btn_six)
-            btnSixAnim = background as AnimatedVectorDrawable
+
         }
         sevenButton = view.findViewById<Button>(R.id.btn_seven).apply {
             setBackgroundResource(R.drawable.anim_btn_seven)
-            btnSevenAnim = background as AnimatedVectorDrawable
+
         }
         eightButton = view.findViewById<Button>(R.id.btn_eight).apply {
             setBackgroundResource(R.drawable.anim_btn_eight)
-            btnEightAnim = background as AnimatedVectorDrawable
+
         }
         nineButton = view.findViewById<Button>(R.id.btn_nine).apply {
             setBackgroundResource(R.drawable.anim_btn_nine)
-            btnNineAnim = background as AnimatedVectorDrawable
+
         }
         dotButton = view.findViewById<Button>(R.id.btn_dot).apply {
             setBackgroundResource(R.drawable.anim_btn_dot)
-            btnDotAnim = background as AnimatedVectorDrawable
+
         }
 
         backSpButton = view.findViewById<Button>(R.id.btn_back).apply {
             setBackgroundResource(R.drawable.anim_btn_backspace)
-            btnBackspaceAnim = background as AnimatedVectorDrawable
+
         }
         resetButton = view.findViewById<Button>(R.id.btn_reset).apply {
             setBackgroundResource(R.drawable.anim_btn_reset)
-            btnResetAnim = background as AnimatedVectorDrawable
+
         }
 
         percentageButton = view.findViewById<Button>(R.id.btn_percentage).apply {
             setBackgroundResource(R.drawable.anim_btn_percentage)
-            btnPercentlAnim = background as AnimatedVectorDrawable
+
         }
         divideButton = view.findViewById<Button>(R.id.btn_divide).apply {
             setBackgroundResource(R.drawable.anim_btn_division)
-            btnDivisionlAnim = background as AnimatedVectorDrawable
+
         }
         multiplyButton = view.findViewById<Button>(R.id.btn_multiple).apply {
             setBackgroundResource(R.drawable.anim_btn_multiply)
-            btnMultiplyAnim = background as AnimatedVectorDrawable
+
         }
         minusButton = view.findViewById<Button>(R.id.btn_minus).apply {
             setBackgroundResource(R.drawable.anim_btn_minus)
-            btnMinuslAnim = background as AnimatedVectorDrawable
+
         }
         plusButton = view.findViewById<Button>(R.id.btn_plus).apply {
             setBackgroundResource(R.drawable.anim_btn_plus)
-            btnPluslAnim = background as AnimatedVectorDrawable
+
         }
         equalButton = view.findViewById<Button>(R.id.btn_equal).apply {
             setBackgroundResource(R.drawable.anim_btn_equal)
-            btnEqualAnim = background as AnimatedVectorDrawable
+
         }
 
 
@@ -236,100 +205,99 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
 
             zeroButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("0"))
-                zeroButton.setBackground(btnZeroAnim)
-                btnZeroAnim.start()
+                (zeroButton.background as AnimatedVectorDrawable).start()
             }
             oneButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("1"))
-                oneButton.setBackground(btnOneAnim)
-                btnOneAnim.start()
+
+                (oneButton.background as AnimatedVectorDrawable).start()
             }
             twoButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("2"))
-                twoButton.setBackground(btnTwoAnim)
-                btnTwoAnim.start()
+                (twoButton.background as AnimatedVectorDrawable).start()
+
             }
             threeButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("3"))
-                threeButton.setBackground(btnThreeAnim)
-                btnThreeAnim.start()
+                (threeButton.background as AnimatedVectorDrawable).start()
+
             }
             fourButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("4"))
-                fourButton.setBackground(btnFourAnim)
-                btnFourAnim.start()
+                (fourButton.background as AnimatedVectorDrawable).start()
+
             }
             fiveButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("5"))
-                fiveButton.setBackground(btnFiveAnim)
-                btnFiveAnim.start()
+                (fiveButton.background as AnimatedVectorDrawable).start()
+
             }
             sixButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("6"))
-                sixButton.setBackground(btnSixAnim)
-                btnSixAnim.start()
+                (sixButton.background as AnimatedVectorDrawable).start()
+
             }
             sevenButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("7"))
-                sevenButton.setBackground(btnSevenAnim)
-                btnSevenAnim.start()
+                (sevenButton.background as AnimatedVectorDrawable).start()
+
             }
             eightButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("8"))
-                eightButton.setBackground(btnEightAnim)
-                btnEightAnim.start()
+                (eightButton.background as AnimatedVectorDrawable).start()
+
             }
             nineButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("9"))
-                nineButton.setBackground(btnNineAnim)
-                btnNineAnim.start()
+                (nineButton.background as AnimatedVectorDrawable).start()
+
             }
             dotButton -> {
                 upDateOperationAndResultLines(viewModel.onNumberClick("."))
-                dotButton.setBackground(btnDotAnim)
-                btnDotAnim.start()
+                (dotButton.background as AnimatedVectorDrawable).start()
+
             }
 
             backSpButton -> {
                 upDateOperationAndResultLines(viewModel.backspaceClick())
-                backSpButton.setBackground(btnBackspaceAnim)
-                btnBackspaceAnim.start()
+                (backSpButton.background as AnimatedVectorDrawable).start()
+
             }
             resetButton -> {
                 upDateOperationAndResultLines(viewModel.resetClick())
-                resetButton.setBackground(btnResetAnim)
-                btnResetAnim.start()
+                (resetButton.background as AnimatedVectorDrawable).start()
+
             }
 
             percentageButton -> {
                 upDateOperationAndResultLines(viewModel.onOperationClick("%"))
-                percentageButton.setBackground(btnPercentlAnim)
-                btnPercentlAnim.start()
+                (percentageButton.background as AnimatedVectorDrawable).start()
+
             }
             divideButton -> {
                 upDateOperationAndResultLines(viewModel.onOperationClick("/"))
-                divideButton.setBackground(btnDivisionlAnim)
-                btnDivisionlAnim.start()
+                (divideButton.background as AnimatedVectorDrawable).start()
+
             }
             multiplyButton -> {
                 upDateOperationAndResultLines(viewModel.onOperationClick("×"))
-                multiplyButton.setBackground(btnMultiplyAnim)
-                btnMultiplyAnim.start()
+                (multiplyButton.background as AnimatedVectorDrawable).start()
+
             }
             minusButton -> {
                 upDateOperationAndResultLines(viewModel.onOperationClick("-"))
-                minusButton.setBackground(btnMinuslAnim)
-                btnMinuslAnim.start()
+                (minusButton.background as AnimatedVectorDrawable).start()
+
             }
             plusButton -> {
                 upDateOperationAndResultLines(viewModel.onOperationClick("+"))
-                plusButton.setBackground(btnPluslAnim)
-                btnPluslAnim.start()
+                (plusButton.background as AnimatedVectorDrawable).start()
+
             }
             equalButton -> {
                 upDateOperationAndResultLines(viewModel.onOperationClick("="))
-                equalButton.setBackground(btnEqualAnim)
-                btnEqualAnim.start()
+                (equalButton.background as AnimatedVectorDrawable).start()
+
             }
 
 

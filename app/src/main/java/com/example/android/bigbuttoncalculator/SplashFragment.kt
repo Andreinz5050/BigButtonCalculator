@@ -25,7 +25,7 @@ class SplashFragment : Fragment() {
             context?.let {
                 findNavController().navigate(R.id.action_splashFragment_to_lightFragment)
             }
-        }, 8000)
+        }, 6700)
     }
 
 
