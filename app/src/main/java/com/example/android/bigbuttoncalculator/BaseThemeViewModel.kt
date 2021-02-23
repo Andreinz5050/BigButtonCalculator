@@ -1,15 +1,6 @@
 package com.example.android.bigbuttoncalculator
 
-import android.graphics.drawable.AnimatedVectorDrawable
-import android.graphics.drawable.VectorDrawable
-import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.lifecycle.ViewModel
-import javax.inject.Inject
 
 class BaseThemeViewModel : ViewModel() {
 
@@ -172,7 +163,7 @@ class BaseThemeViewModel : ViewModel() {
     private fun performCalculation(st: String): String {
         var tempString = st
         var ifNoZero: String
-
+        var result = ""
 
 
 
@@ -187,9 +178,9 @@ class BaseThemeViewModel : ViewModel() {
 
 
                 ifNoZero = ifNoZero.substring(0, ifNoZero.length - 1)
-                return (ifNoZero.substring(0, ifNoZero.length - 1))
+                result = ifNoZero.substring(0, ifNoZero.length - 1)
             } else {
-                return (Calculator.calculate(tempString)!!.toString())
+                result = Calculator.calculate(tempString)!!.toString()
             }
 
 
@@ -199,13 +190,29 @@ class BaseThemeViewModel : ViewModel() {
             ifNoZero = Calculator.calculate(st)!!.toString()
             if (ifNoZero[ifNoZero.length - 1] == '0' && ifNoZero[ifNoZero.length - 2] == '.') {
                 ifNoZero = ifNoZero.substring(0, ifNoZero.length - 1)
-                return (ifNoZero.substring(0, ifNoZero.length - 1))
+                result = ifNoZero.substring(0, ifNoZero.length - 1)
             } else {
-                return (Calculator.calculate(st)!!.toString())
+                result = Calculator.calculate(st)!!.toString()
             }
 
 
         }
+
+        val horribleNumber: Double
+        horribleNumber = result.toDouble()
+        val df = DoubleFormatter(6, 7) // 13 = MaxInteger, 14 = MaxDecimal
+
+        val beautyNumber = df.format(horribleNumber)
+//        if(result.length >= 7)
+//        {
+//           for(i in 1..result.length - 6)
+//            result = result.substring(0, ifNoZero.length - 1)
+//            return result
+//        }
+//        else
+//        {
+            return beautyNumber
+//        }
 
     }
 }

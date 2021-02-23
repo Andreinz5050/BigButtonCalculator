@@ -2,15 +2,16 @@ package com.example.android.bigbuttoncalculator
 
 
 import android.graphics.drawable.AnimatedVectorDrawable
-
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.widget.TextViewCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.*
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 
 
@@ -75,6 +76,17 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
     fun upDateOperationAndResultLines(pair: Pair<String, String>) {
         operationLine.text = pair.first
         resultLine.text = pair.second
+//        TextViewCompat.setAutoSizeTextTypeWithDefaults(resultLine,
+//            TextViewCompat.AUTO_SIZE_TEXT_TYPE_NONE)
+//        resultLine.post(Runnable {
+//            TextViewCompat
+//                .setAutoSizeTextTypeUniformWithConfiguration(
+//                    resultLine,
+//                    31, 58, 1, TypedValue.COMPLEX_UNIT_DIP
+//                )
+//        })
+//        TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(resultLine, 31, 58, 2,
+//            TypedValue.COMPLEX_UNIT_DIP);
     }
 
 

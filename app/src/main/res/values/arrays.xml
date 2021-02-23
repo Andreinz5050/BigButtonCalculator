@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="autosize_text_sizes">
+        <item>31sp</item>
+        <item>40sp</item>
+        <item>49sp</item>
+        <item>58sp</item>
+    </array>
+</resources>
