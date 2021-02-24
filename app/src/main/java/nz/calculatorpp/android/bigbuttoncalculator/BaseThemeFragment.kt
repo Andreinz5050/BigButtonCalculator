@@ -1,18 +1,17 @@
-package com.example.android.bigbuttoncalculator
+package nz.calculatorpp.android.bigbuttoncalculator
 
 
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.core.widget.TextViewCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import nz.calculatorpp.android.bigbuttoncalculator.R
 
 
 abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
@@ -56,7 +55,11 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
     private lateinit var viewModel: BaseThemeViewModel
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.light_fragment_layout, container, false)
         initializeFields(view)
         setUp()
@@ -200,7 +203,9 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
         backSpButton.setOnClickListener(this)
         resetButton.setOnClickListener(this)
 
-        menuButton.setOnClickListener { this.findNavController().navigate(R.id.action_lightFragment_to_menuFragment) }
+        menuButton.setOnClickListener {
+            this.findNavController().navigate(R.id.action_lightFragment_to_menuFragment)
+        }
         percentageButton.setOnClickListener(this)
         divideButton.setOnClickListener(this)
         multiplyButton.setOnClickListener(this)

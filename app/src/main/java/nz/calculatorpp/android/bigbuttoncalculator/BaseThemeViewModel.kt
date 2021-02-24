@@ -1,4 +1,4 @@
-package com.example.android.bigbuttoncalculator
+package nz.calculatorpp.android.bigbuttoncalculator
 
 import androidx.lifecycle.ViewModel
 
@@ -173,26 +173,34 @@ class BaseThemeViewModel : ViewModel() {
             tempString = tempString.substring(0, tempString.length - 1)
 
 
-            ifNoZero = Calculator.calculate(tempString)!!.toString()
+            ifNoZero = Calculator.calculate(
+                tempString
+            )!!.toString()
             if (ifNoZero[ifNoZero.length - 1] == '0' && ifNoZero[ifNoZero.length - 2] == '.') {
 
 
                 ifNoZero = ifNoZero.substring(0, ifNoZero.length - 1)
                 result = ifNoZero.substring(0, ifNoZero.length - 1)
             } else {
-                result = Calculator.calculate(tempString)!!.toString()
+                result = Calculator.calculate(
+                    tempString
+                )!!.toString()
             }
 
 
         } else {
 
 
-            ifNoZero = Calculator.calculate(st)!!.toString()
+            ifNoZero = Calculator.calculate(
+                st
+            )!!.toString()
             if (ifNoZero[ifNoZero.length - 1] == '0' && ifNoZero[ifNoZero.length - 2] == '.') {
                 ifNoZero = ifNoZero.substring(0, ifNoZero.length - 1)
                 result = ifNoZero.substring(0, ifNoZero.length - 1)
             } else {
-                result = Calculator.calculate(st)!!.toString()
+                result = Calculator.calculate(
+                    st
+                )!!.toString()
             }
 
 
@@ -200,7 +208,10 @@ class BaseThemeViewModel : ViewModel() {
 
         val horribleNumber: Double
         horribleNumber = result.toDouble()
-        val df = DoubleFormatter(6, 7) // 13 = MaxInteger, 14 = MaxDecimal
+        val df = DoubleFormatter(
+            6,
+            7
+        ) // 13 = MaxInteger, 14 = MaxDecimal
 
         val beautyNumber = df.format(horribleNumber)
 //        if(result.length >= 7)
@@ -211,7 +222,7 @@ class BaseThemeViewModel : ViewModel() {
 //        }
 //        else
 //        {
-            return beautyNumber
+        return beautyNumber
 //        }
 
     }

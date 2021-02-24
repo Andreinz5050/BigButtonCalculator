@@ -1,21 +1,28 @@
-package com.example.android.bigbuttoncalculator
+package nz.calculatorpp.android.bigbuttoncalculator
 
 object Calculator {
 
     fun calculate(expression: String?): Double? {
         return if (expression == null || expression.length == 0) {
             null
-        } else calc(expression.replace(" ", ""))
+        } else calc(
+            expression.replace(" ", "")
+        )
     }
 
     fun calc(expression: String): Double? {
         var expression = expression
 
         if (expression.startsWith("(") && expression.endsWith(")")) {
-            return calc(expression.substring(1, expression.length - 1))
+            return calc(
+                expression.substring(1, expression.length - 1)
+            )
         }
         val containerArr = arrayOf(expression)
-        var leftVal = getNextOperand(containerArr)
+        var leftVal =
+            getNextOperand(
+                containerArr
+            )
         expression = containerArr[0]
         if (expression.length == 0) {
             return leftVal
@@ -25,7 +32,10 @@ object Calculator {
 
         while (operator == '×' || operator == '/' || operator == '%') {
             containerArr[0] = expression
-            val rightVal = getNextOperand(containerArr)
+            val rightVal =
+                getNextOperand(
+                    containerArr
+                )
             expression = containerArr[0]
             if (operator == '×') {
                 leftVal = leftVal * rightVal
@@ -42,9 +52,13 @@ object Calculator {
             }
         }
         return if (operator == '+') {
-            leftVal + calc(expression)!!
+            leftVal + calc(
+                expression
+            )!!
         } else {
-            leftVal - calc(expression)!!
+            leftVal - calc(
+                expression
+            )!!
         }
 
 
@@ -63,14 +77,22 @@ object Calculator {
                 }
                 i++
             }
-            res = calc(exp[0].substring(1, i - 1))!!
+            res = calc(
+                exp[0].substring(
+                    1,
+                    i - 1
+                )
+            )!!
             exp[0] = exp[0].substring(i)
         } else {
             var i = 1
             if (exp[0][0] == '-') {
                 i++
             }
-            while (exp[0].length > i && isNumber(exp[0][i].toInt())) {
+            while (exp[0].length > i && isNumber(
+                    exp[0][i].toInt()
+                )
+            ) {
                 i++
             }
             res = java.lang.Double.parseDouble(exp[0].substring(0, i))

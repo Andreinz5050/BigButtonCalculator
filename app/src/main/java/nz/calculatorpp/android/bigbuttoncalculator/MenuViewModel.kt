@@ -1,4 +1,4 @@
-package com.example.android.bigbuttoncalculator
+package nz.calculatorpp.android.bigbuttoncalculator
 
 import androidx.lifecycle.ViewModel
 

@@ -1,4 +1,4 @@
-package com.example.android.bigbuttoncalculator
+package nz.calculatorpp.android.bigbuttoncalculator
 
 import android.content.Context
 import android.os.Bundle
@@ -6,19 +6,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import nz.calculatorpp.android.bigbuttoncalculator.R
 
 class DarkFragment : BaseThemeFragment() {
 
 
     companion object {
-        fun newInstance() = DarkFragment()
+        fun newInstance() =
+            DarkFragment()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.dark_fragment_layout, container, false)
         initializeFields(view)
         setUp()
-        menuButton.setOnClickListener { this.findNavController().navigate(R.id.action_darkFragment_to_menuFragment) }
+        menuButton.setOnClickListener {
+            this.findNavController().navigate(R.id.action_darkFragment_to_menuFragment)
+        }
         passTheme()
 
 

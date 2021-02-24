@@ -1,4 +1,4 @@
-package com.example.android.bigbuttoncalculator
+package nz.calculatorpp.android.bigbuttoncalculator
 
 import com.google.common.base.Preconditions
 import com.google.common.base.Strings
@@ -123,7 +123,9 @@ class DoubleFormatter(maxInteger: Int, maxFraction: Int) {
     fun formatHtml(v: Double): String {
         return if (java.lang.Double.isNaN(v)) {
             "-"
-        } else htmlize(format(v))
+        } else htmlize(
+            format(v)
+        )
     }
 
     /**

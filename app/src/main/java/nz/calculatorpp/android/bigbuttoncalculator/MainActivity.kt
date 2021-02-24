@@ -1,15 +1,14 @@
-package com.example.android.bigbuttoncalculator
+package nz.calculatorpp.android.bigbuttoncalculator
 
 
 import android.os.Bundle
-import android.view.View
-import android.view.Window
 
 import androidx.appcompat.app.AppCompatActivity
 import dagger.android.DispatchingAndroidInjector
 
 import dagger.android.support.HasSupportFragmentInjector
 import androidx.fragment.app.Fragment
+import nz.calculatorpp.android.bigbuttoncalculator.R
 
 
 import javax.inject.Inject

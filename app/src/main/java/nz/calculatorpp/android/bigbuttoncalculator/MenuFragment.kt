@@ -1,4 +1,4 @@
-package com.example.android.bigbuttoncalculator
+package nz.calculatorpp.android.bigbuttoncalculator
 
 import android.content.Context
 import android.graphics.drawable.AnimatedVectorDrawable
@@ -12,6 +12,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import nz.calculatorpp.android.bigbuttoncalculator.R
 
 class MenuFragment : Fragment() {
 
@@ -23,7 +24,11 @@ class MenuFragment : Fragment() {
 
     private lateinit var switchThemeButton: Button
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.themes_menu, container, false)
         initializeFields(view)
         setUpListeners()
@@ -61,7 +66,9 @@ class MenuFragment : Fragment() {
                 )
             } else {
                 Handler().postDelayed(
-                    { this.findNavController().navigate(R.id.action_menuFragment_to_lightFragment) },
+                    {
+                        this.findNavController().navigate(R.id.action_menuFragment_to_lightFragment)
+                    },
                     800
                 )
             }

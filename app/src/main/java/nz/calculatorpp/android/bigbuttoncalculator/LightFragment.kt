@@ -1,4 +1,4 @@
-package com.example.android.bigbuttoncalculator
+package nz.calculatorpp.android.bigbuttoncalculator
 
 import android.content.Context
 import android.os.Bundle
@@ -7,18 +7,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 
+
 class LightFragment : BaseThemeFragment() {
 
     companion object {
-        fun newInstance() = LightFragment()
+        fun newInstance() =
+            LightFragment()
     }
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.light_fragment_layout, container, false)
         initializeFields(view)
         setUp()
-        menuButton.setOnClickListener { this.findNavController().navigate(R.id.action_lightFragment_to_menuFragment) }
+        menuButton.setOnClickListener {
+            this.findNavController().navigate(R.id.action_lightFragment_to_menuFragment)
+        }
         passTheme()
 
 
