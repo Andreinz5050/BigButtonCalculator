@@ -1,6 +1,8 @@
 package nz.calculatorpp.android.bigbuttoncalculator
 
+import android.R.attr.data
 import androidx.lifecycle.ViewModel
+
 
 class BaseThemeViewModel : ViewModel() {
 
@@ -209,21 +211,14 @@ class BaseThemeViewModel : ViewModel() {
         val horribleNumber: Double
         horribleNumber = result.toDouble()
         val df = DoubleFormatter(
-            6,
-            7
-        ) // 13 = MaxInteger, 14 = MaxDecimal
+            7,
+            8
+        ) // 7 = MaxInteger, 8 = MaxDecimal
 
         val beautyNumber = df.format(horribleNumber)
-//        if(result.length >= 7)
-//        {
-//           for(i in 1..result.length - 6)
-//            result = result.substring(0, ifNoZero.length - 1)
-//            return result
-//        }
-//        else
-//        {
-        return beautyNumber
-//        }
+        val temp: String = beautyNumber.replace(",", "")
+
+        return temp
 
     }
 }
