@@ -5,9 +5,12 @@ object Calculator {
     fun calculate(expression: String?): Double? {
         return if (expression == null || expression.length == 0) {
             null
-        } else calc(
-            expression.replace(" ", "")
-        )
+        } else
+        {
+            var newExpression = expression.replace(" ", "")
+            newExpression = expression.replace(",", "")
+            calc(newExpression)
+        }
     }
 
     fun calc(str: String): Double {
@@ -53,6 +56,7 @@ object Calculator {
                 while (true) {
                     if (eat('×'.toInt())) x *= parseFactor() // multiplication
                     else if (eat('/'.toInt())) x /= parseFactor() // division
+                    else if (eat('%'.toInt())) x = x / 100 * parseFactor() // percentage
                     else return x
                 }
             }
