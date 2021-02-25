@@ -16,6 +16,8 @@ class BaseThemeViewModel : ViewModel() {
     private var result = ""
     private var toEvaluate = ""
 
+    var strings = arrayOf(valueOne, lastNumber, lastOperation, result, toEvaluate)
+
 
     fun onNumberClick(string: String): Pair<String, String> {
 
@@ -48,17 +50,20 @@ class BaseThemeViewModel : ViewModel() {
 
         if (lastOperation == "=") {
             result = ""
+            saveStrings()
             return Pair(toEvaluate, result)
         } else if (lastOperation != "=") {
 
 
             try {
                 result = performCalculation(toEvaluate)
+                saveStrings()
                 return Pair(toEvaluate, result)
             } catch (ex: Exception) {
 
                 result = ""
                 toEvaluate = ""
+                saveStrings()
                 return Pair(toEvaluate, result)
             }
 
@@ -67,6 +72,7 @@ class BaseThemeViewModel : ViewModel() {
 
 
             result = ""
+            saveStrings()
             return Pair(toEvaluate, result)
 
         }
@@ -86,12 +92,14 @@ class BaseThemeViewModel : ViewModel() {
 
             result = toEvaluate
             toEvaluate = ""
+            saveStrings()
             return Pair(toEvaluate, result)
 
 
         } else if (lastOperation != "=" && valueOne == "") {
 
             toEvaluate = ""
+            saveStrings()
             return Pair(toEvaluate, result)
         } else if (lastOperation != "=") {
 
@@ -103,6 +111,7 @@ class BaseThemeViewModel : ViewModel() {
             }
             valueOne += lastOperation
             toEvaluate = valueOne
+            saveStrings()
             return Pair(toEvaluate, result)
 
         } else if (lastOperation != "=" && toEvaluate == "") {
@@ -110,6 +119,7 @@ class BaseThemeViewModel : ViewModel() {
 
             toEvaluate = valueOne + lastOperation
             result = ""
+            saveStrings()
             return Pair(toEvaluate, result)
 
         } else if (lastOperation == "=" && result == "") {
@@ -118,6 +128,7 @@ class BaseThemeViewModel : ViewModel() {
             result = toEvaluate
             valueOne = toEvaluate
             toEvaluate = ""
+            saveStrings()
             return Pair(toEvaluate, result)
 
 
@@ -127,10 +138,12 @@ class BaseThemeViewModel : ViewModel() {
 
             valueOne = result
             toEvaluate = ""
+            saveStrings()
             return Pair(toEvaluate, result)
 
 
         }
+        saveStrings()
         return Pair(toEvaluate, result)
 
     }
@@ -150,6 +163,7 @@ class BaseThemeViewModel : ViewModel() {
             } catch (ex: Exception) {
                 result = ""
                 toEvaluate = ""
+                saveStrings()
                 return Pair(toEvaluate, result)
             }
 
@@ -157,6 +171,7 @@ class BaseThemeViewModel : ViewModel() {
             lastOperation = "="
             result = ""
             toEvaluate = ""
+            saveStrings()
             return Pair(toEvaluate, result)
         }
 
@@ -169,6 +184,7 @@ class BaseThemeViewModel : ViewModel() {
         lastOperation = "="
         result = ""
         toEvaluate = ""
+        saveStrings()
         return Pair(toEvaluate, result)
     }
 
@@ -225,8 +241,11 @@ class BaseThemeViewModel : ViewModel() {
 
         val beautyNumber = df.format(horribleNumber)
         val temp: String = beautyNumber.replace(",", "")
-
+        saveStrings()
         return beautyNumber
 
+    }
+    fun saveStrings() {
+        strings = arrayOf(valueOne, lastNumber, lastOperation, result, toEvaluate)
     }
 }

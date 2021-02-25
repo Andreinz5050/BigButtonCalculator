@@ -23,6 +23,7 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
 
     private lateinit var lastOperation: String
     private lateinit var operationLineSave: String
+    private lateinit var resultLineSave: String
 
     private lateinit var operationLine: TextView
     private lateinit var resultLine: TextView
@@ -61,6 +62,8 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.light_fragment_layout, container, false)
+//        viewModel = ViewModelProviders.of(this).get(BaseThemeViewModel::class.java)
+
         initializeFields(view)
         setUp()
 
@@ -72,13 +75,16 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel = ViewModelProviders.of(this).get(BaseThemeViewModel::class.java)
+
+
 
     }
 
     fun upDateOperationAndResultLines(pair: Pair<String, String>) {
         operationLine.text = pair.first
         resultLine.text = pair.second
+        operationLineSave = pair.first
+        resultLineSave = pair.second
 //        TextViewCompat.setAutoSizeTextTypeWithDefaults(resultLine,
 //            TextViewCompat.AUTO_SIZE_TEXT_TYPE_NONE)
 //        resultLine.post(Runnable {
@@ -94,13 +100,22 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
 
 
     fun initializeFields(view: View) {
-        valueOne = ""
-        lastNumber = ""
-        lastOperation = ""
-        operationLineSave = ""
+        viewModel = activity?.run {
+            ViewModelProviders.of(this).get(BaseThemeViewModel::class.java)
+        } ?: throw Exception("Invalid Activity")
+        valueOne = viewModel.strings[0]
+        lastNumber = viewModel.strings[1]
+        lastOperation = viewModel.strings[2]
 
         resultLine = view.findViewById(R.id.resultLine)
         operationLine = view.findViewById(R.id.operationLine)
+
+        resultLineSave = viewModel.strings[3]
+        resultLine.text = viewModel.strings[3]
+        operationLineSave = viewModel.strings[4]
+        operationLine.text = viewModel.strings[4]
+
+
 
         menuButton = view.findViewById(R.id.menuButton)
         zeroButton = view.findViewById<Button>(R.id.btn_zero).apply {
