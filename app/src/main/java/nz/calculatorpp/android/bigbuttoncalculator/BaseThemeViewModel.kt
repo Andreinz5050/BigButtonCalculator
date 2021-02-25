@@ -1,7 +1,8 @@
 package nz.calculatorpp.android.bigbuttoncalculator
 
-import android.R.attr.data
 import androidx.lifecycle.ViewModel
+import java.util.*
+import kotlin.concurrent.timerTask
 
 
 class BaseThemeViewModel : ViewModel() {
@@ -179,11 +180,28 @@ class BaseThemeViewModel : ViewModel() {
     }
 
     fun resetClick(): Pair<String, String> {
+        saveStrings()
+        if(toEvaluate =="22011988")
+        {
+            valueOne = ""
+            lastOperation = "="
+            result = "Оля!"
+            toEvaluate = "С Днем Рождения, "
 
-        valueOne = ""
-        lastOperation = "="
-        result = ""
-        toEvaluate = ""
+            val timer = Timer()
+            timer.schedule(timerTask
+            {
+                toEvaluate = ""
+                resetClick()
+            }, 1000)
+        }
+        else
+        {
+            valueOne = ""
+            lastOperation = "="
+            result = ""
+            toEvaluate = ""
+        }
         saveStrings()
         return Pair(toEvaluate, result)
     }
@@ -248,4 +266,5 @@ class BaseThemeViewModel : ViewModel() {
     fun saveStrings() {
         strings = arrayOf(valueOne, lastNumber, lastOperation, result, toEvaluate)
     }
+
 }
