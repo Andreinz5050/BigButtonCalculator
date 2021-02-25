@@ -115,7 +115,7 @@ class BaseThemeViewModel : ViewModel() {
         } else if (lastOperation == "=") {
 
 
-            valueOne = result
+            result = valueOne
             toEvaluate = ""
             return Pair(toEvaluate, result)
 
