@@ -112,10 +112,20 @@ class BaseThemeViewModel : ViewModel() {
             result = ""
             return Pair(toEvaluate, result)
 
-        } else if (lastOperation == "=") {
+        } else if (lastOperation == "=" && result == "") {
 
 
-            result = valueOne
+            result = toEvaluate
+            valueOne = toEvaluate
+            toEvaluate = ""
+            return Pair(toEvaluate, result)
+
+
+        }
+        else if (lastOperation == "=") {
+
+
+            valueOne = result
             toEvaluate = ""
             return Pair(toEvaluate, result)
 
@@ -200,9 +210,7 @@ class BaseThemeViewModel : ViewModel() {
                 ifNoZero = ifNoZero.substring(0, ifNoZero.length - 1)
                 result = ifNoZero.substring(0, ifNoZero.length - 1)
             } else {
-                result = Calculator.calculate(
-                    st
-                )!!.toString()
+                result = ifNoZero
             }
 
 
@@ -218,7 +226,7 @@ class BaseThemeViewModel : ViewModel() {
         val beautyNumber = df.format(horribleNumber)
         val temp: String = beautyNumber.replace(",", "")
 
-        return temp
+        return beautyNumber
 
     }
 }
