@@ -86,8 +86,23 @@ class BaseThemeViewModel : ViewModel() {
         lastOperation = string
         lastNumber = ""
 
-
-
+        if(toEvaluate =="22.01×1988" && result =="43,755.88")
+        {
+            result = "Оля!"
+            toEvaluate = "С Днем Рождения, "
+            val timer = Timer()
+            timer.schedule(timerTask
+            {
+                toEvaluate ==" 22.01×1988"
+                result = "43,755.88"
+                saveStrings()
+                onOperationClick("=")
+            }, 100)
+            saveStrings()
+            return Pair(toEvaluate, result)
+        }
+        else
+        {
 
         if (lastOperation == "=" && valueOne == "") {
 
@@ -146,7 +161,7 @@ class BaseThemeViewModel : ViewModel() {
         }
         saveStrings()
         return Pair(toEvaluate, result)
-
+        }
     }
 
     fun backspaceClick(): Pair<String, String> {
@@ -181,7 +196,7 @@ class BaseThemeViewModel : ViewModel() {
 
     fun resetClick(): Pair<String, String> {
         saveStrings()
-        if(toEvaluate =="22011988")
+        if(toEvaluate =="22.01×1988")
         {
             valueOne = ""
             lastOperation = "="
@@ -193,7 +208,7 @@ class BaseThemeViewModel : ViewModel() {
             {
                 toEvaluate = ""
                 resetClick()
-            }, 1000)
+            }, 100)
         }
         else
         {
@@ -210,7 +225,7 @@ class BaseThemeViewModel : ViewModel() {
         var tempString = st
         var ifNoZero: String
         var result = ""
-
+        val beautyNumber: String
 
 
 
@@ -256,8 +271,7 @@ class BaseThemeViewModel : ViewModel() {
             7,
             8
         ) // 7 = MaxInteger, 8 = MaxDecimal
-
-        val beautyNumber = df.format(horribleNumber)
+        beautyNumber = df.format(horribleNumber)
         val temp: String = beautyNumber.replace(",", "")
         saveStrings()
         return beautyNumber

@@ -302,22 +302,9 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
 
             }
             resetButton -> {
-                if(viewModel.strings[4] == "22011988")
-                {
+
                     upDateOperationAndResultLines(viewModel.resetClick())
-                    activity?.runOnUiThread(Runnable
-                    {
-                        val timer2 = Timer()
-                        timer2.schedule(timerTask
-                        {
-                            upDateOperationAndResultLines(viewModel.resetClick())
-                        }, 5000)
-                    })
-                }
-                else
-                {
-                    upDateOperationAndResultLines(viewModel.resetClick())
-                }
+
                 (resetButton.background as AnimatedVectorDrawable).start()
 
             }
@@ -348,14 +335,64 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
 
             }
             equalButton -> {
-                upDateOperationAndResultLines(viewModel.onOperationClick("="))
+                if(viewModel.strings[4] == "22.01×1988")
+                {
+                    upDateOperationAndResultLines(viewModel.onOperationClick("="))
+                    setUpTempOffForClickListener()
+                    activity?.runOnUiThread(Runnable
+                    {
+                        val timer2 = Timer()
+                        timer2.schedule(timerTask
+                        {
+
+                                upDateOperationAndResultLines(viewModel.onOperationClick("="))
+
+                        }, 5000)
+                    })
+                }
+                else
+                {
+                    upDateOperationAndResultLines(viewModel.onOperationClick("="))
+                }
                 (equalButton.background as AnimatedVectorDrawable).start()
-
             }
-
-
         }
     }
+    fun setUpTempOffForClickListener() {
+        zeroButton.setOnClickListener(null)
+        oneButton.setOnClickListener(null)
+        twoButton.setOnClickListener(null)
+        threeButton.setOnClickListener(null)
+        fourButton.setOnClickListener(null)
+        fiveButton.setOnClickListener(null)
+        sixButton.setOnClickListener(null)
+        sevenButton.setOnClickListener(null)
+        eightButton.setOnClickListener(null)
+        nineButton.setOnClickListener(null)
+        dotButton.setOnClickListener(null)
 
+        backSpButton.setOnClickListener(null)
+        resetButton.setOnClickListener(null)
 
+        menuButton.setOnClickListener {
+            this.findNavController().navigate(R.id.action_lightFragment_to_menuFragment)
+        }
+        percentageButton.setOnClickListener(null)
+        divideButton.setOnClickListener(null)
+        multiplyButton.setOnClickListener(null)
+        minusButton.setOnClickListener(null)
+        plusButton.setOnClickListener(null)
+        equalButton.setOnClickListener(null)
+        activity?.runOnUiThread(Runnable
+        {
+            val timer2 = Timer()
+            timer2.schedule(timerTask
+            {
+
+                setUp()
+
+            }, 5000)
+        })
+
+    }
 }
