@@ -23,9 +23,8 @@ class BaseThemeViewModel : ViewModel() {
     fun onNumberClick(string: String): Pair<String, String> {
 
 
-        val s = string
-        valueOne += s
-        lastNumber += s
+        valueOne += string
+        lastNumber += string
 
         var valueOneWithoutLast = ""
 
@@ -38,7 +37,7 @@ class BaseThemeViewModel : ViewModel() {
             if (lastNumber[lastNumber.length - 1] == '.' && lastNumber[lastNumber.length - 2] == '.') {
                 valueOne = valueOne.substring(0, valueOne.length - 1)
                 lastNumber = lastNumber.substring(0, lastNumber.length - 1)
-            } else if (valueOneWithoutLast.contains(".") && s == ".") {
+            } else if (valueOneWithoutLast.contains(".") && string == ".") {
                 valueOne = valueOne.substring(0, valueOne.length - 1)
                 lastNumber = lastNumber.substring(0, lastNumber.length - 1)
             }
@@ -49,33 +48,37 @@ class BaseThemeViewModel : ViewModel() {
         toEvaluate = valueOne
 
 
-        if (lastOperation == "=") {
-            result = ""
-            saveStrings()
-            return Pair(toEvaluate, result)
-        } else if (lastOperation != "=") {
-
-
-            try {
-                result = performCalculation(toEvaluate)
-                saveStrings()
-                return Pair(toEvaluate, result)
-            } catch (ex: Exception) {
-
+        when {
+            lastOperation == "=" -> {
                 result = ""
-                toEvaluate = ""
                 saveStrings()
                 return Pair(toEvaluate, result)
             }
+            lastOperation != "=" -> {
 
 
-        } else {
+                return try {
+                    result = performCalculation(toEvaluate)
+                    saveStrings()
+                    Pair(toEvaluate, result)
+                } catch (ex: Exception) {
+
+                    result = ""
+                    toEvaluate = ""
+                    saveStrings()
+                    Pair(toEvaluate, result)
+                }
 
 
-            result = ""
-            saveStrings()
-            return Pair(toEvaluate, result)
+            }
+            else -> {
 
+
+                result = ""
+                saveStrings()
+                return Pair(toEvaluate, result)
+
+            }
         }
 
 
@@ -93,7 +96,7 @@ class BaseThemeViewModel : ViewModel() {
             val timer = Timer()
             timer.schedule(timerTask
             {
-                toEvaluate ==" 22.01×1988"
+                toEvaluate =" 22.01×1988"
                 result = "43,755.88"
                 saveStrings()
                 onOperationClick("=")
@@ -172,15 +175,15 @@ class BaseThemeViewModel : ViewModel() {
             toEvaluate = str
             valueOne = str
 
-            try {
+            return try {
 
                 result = performCalculation(str)
-                return Pair(toEvaluate, result)
+                Pair(toEvaluate, result)
             } catch (ex: Exception) {
                 result = ""
                 toEvaluate = ""
                 saveStrings()
-                return Pair(toEvaluate, result)
+                Pair(toEvaluate, result)
             }
 
         } else {
@@ -224,7 +227,7 @@ class BaseThemeViewModel : ViewModel() {
     private fun performCalculation(st: String): String {
         var tempString = st
         var ifNoZero: String
-        var result = ""
+        val result: String
         val beautyNumber: String
 
 
@@ -272,12 +275,12 @@ class BaseThemeViewModel : ViewModel() {
             8
         ) // 7 = MaxInteger, 8 = MaxDecimal
         beautyNumber = df.format(horribleNumber)
-        val temp: String = beautyNumber.replace(",", "")
+        beautyNumber.replace(",", "")
         saveStrings()
         return beautyNumber
 
     }
-    fun saveStrings() {
+    private fun saveStrings() {
         strings = arrayOf(valueOne, lastNumber, lastOperation, result, toEvaluate)
     }
 

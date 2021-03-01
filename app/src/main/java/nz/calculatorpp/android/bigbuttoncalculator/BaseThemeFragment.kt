@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 
 import java.util.*
@@ -74,22 +74,13 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
     }
 
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-
-
-
-    }
-
-    fun upDateOperationAndResultLines(pair: Pair<String, String>) {
-        activity?.runOnUiThread(Runnable
-        {
+    private fun upDateOperationAndResultLines(pair: Pair<String, String>) {
+        activity?.runOnUiThread {
             operationLine.text = pair.first
             resultLine.text = pair.second
             operationLineSave = pair.first
             resultLineSave = pair.second
-        })
+        }
 
 //        TextViewCompat.setAutoSizeTextTypeWithDefaults(resultLine,
 //            TextViewCompat.AUTO_SIZE_TEXT_TYPE_NONE)
@@ -106,8 +97,10 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
 
 
     fun initializeFields(view: View) {
+
         viewModel = activity?.run {
-            ViewModelProviders.of(this).get(BaseThemeViewModel::class.java)
+//            ViewModelProviders.of(this).get(BaseThemeViewModel::class.java)
+             ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(BaseThemeViewModel::class.java)
         } ?: throw Exception("Invalid Activity")
         valueOne = viewModel.strings[0]
         lastNumber = viewModel.strings[1]
@@ -339,16 +332,15 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
                 {
                     upDateOperationAndResultLines(viewModel.onOperationClick("="))
                     setUpTempOffForClickListener()
-                    activity?.runOnUiThread(Runnable
-                    {
+                    activity?.runOnUiThread {
                         val timer2 = Timer()
                         timer2.schedule(timerTask
                         {
 
-                                upDateOperationAndResultLines(viewModel.onOperationClick("="))
+                            upDateOperationAndResultLines(viewModel.onOperationClick("="))
 
                         }, 5000)
-                    })
+                    }
                 }
                 else
                 {
@@ -358,7 +350,7 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
             }
         }
     }
-    fun setUpTempOffForClickListener() {
+    private fun setUpTempOffForClickListener() {
         zeroButton.setOnClickListener(null)
         oneButton.setOnClickListener(null)
         twoButton.setOnClickListener(null)
@@ -383,8 +375,7 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
         minusButton.setOnClickListener(null)
         plusButton.setOnClickListener(null)
         equalButton.setOnClickListener(null)
-        activity?.runOnUiThread(Runnable
-        {
+        activity?.runOnUiThread {
             val timer2 = Timer()
             timer2.schedule(timerTask
             {
@@ -392,7 +383,7 @@ abstract class BaseThemeFragment : Fragment(), View.OnClickListener {
                 setUp()
 
             }, 5000)
-        })
+        }
 
     }
 }

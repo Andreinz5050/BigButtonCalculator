@@ -2,7 +2,8 @@ package nz.calculatorpp.android.bigbuttoncalculator
 
 import android.content.Context
 import android.graphics.drawable.AnimatedVectorDrawable
-
+import android.os.Build
+import android.os.Looper
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -10,9 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import nz.calculatorpp.android.bigbuttoncalculator.R
 
 class MenuFragment : Fragment() {
 
@@ -37,7 +37,7 @@ class MenuFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MenuViewModel::class.java)
+        viewModel = ViewModelProvider.NewInstanceFactory().create(MenuViewModel::class.java)
     }
 
     private fun initializeFields(view: View) {
@@ -45,12 +45,16 @@ class MenuFragment : Fragment() {
         if (isLightTheme()) {
             switchThemeButton.setBackgroundResource(R.drawable.anim_btn_cooking_low_to_high)
 
-            (switchThemeButton.background as AnimatedVectorDrawable).reset()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                (switchThemeButton.background as AnimatedVectorDrawable).reset()
+            }
 
         } else {
             switchThemeButton.setBackgroundResource(R.drawable.anim_btn_cooking_high_to_low)
 
-            (switchThemeButton.background as AnimatedVectorDrawable).reset()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                (switchThemeButton.background as AnimatedVectorDrawable).reset()
+            }
 
         }
     }
@@ -62,13 +66,12 @@ class MenuFragment : Fragment() {
             if (isLightTheme()) {
 
 
-                Handler().postDelayed(
-                    { this.findNavController().navigate(R.id.action_menuFragment_to_darkFragment) },
+                Handler(Looper.getMainLooper()).postDelayed({
+                    this.findNavController().navigate(R.id.action_menuFragment_to_darkFragment) },
                     800
                 )
             } else {
-                Handler().postDelayed(
-                    {
+                Handler(Looper.getMainLooper()).postDelayed({
                         this.findNavController().navigate(R.id.action_menuFragment_to_lightFragment)
                     },
                     800

@@ -6,6 +6,8 @@ import java.math.RoundingMode
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
+import kotlin.math.abs
+import kotlin.math.pow
 
 
 /**
@@ -30,36 +32,37 @@ import java.util.*
  *
  */
 class DoubleFormatter(maxInteger: Int, maxFraction: Int) {
-    private var EXP_UP // always = 10^maxInteger
+
+    private var ExpUp // always = 10^maxInteger
             = 0.0
-    private var maxInteger_ = 0
-    private var maxFraction_ = 0
-    private var nfBelow_: NumberFormat? = null
-    private var nfNormal_: NumberFormat? = null
-    private var nfAbove_: NumberFormat? = null
+    private var maxInteger = 0
+    private var maxFraction = 0
+    private var nfBelow: NumberFormat? = null
+    private var nfNormal: NumberFormat? = null
+    private var nfAbove: NumberFormat? = null
 
     private enum class NumberFormatKind {
         Below, Normal, Above
     }
 
-    fun setPrecision(maxInteger: Int, maxFraction: Int) {
+    private fun setPrecision(maxInteger: Int, maxFraction: Int) {
         Preconditions.checkArgument(maxFraction >= 0)
-        Preconditions.checkArgument(maxInteger > 0 && maxInteger < 17)
-        if (maxFraction == maxFraction_ && maxInteger_ == maxInteger) {
+        Preconditions.checkArgument(maxInteger in 1..16)
+        if (maxFraction == this.maxFraction && this.maxInteger == maxInteger) {
             return
         }
-        maxFraction_ = maxFraction
-        maxInteger_ = maxInteger
-        EXP_UP = Math.pow(10.0, maxInteger.toDouble())
-        nfBelow_ = createNumberFormat(NumberFormatKind.Below)
-        nfNormal_ = createNumberFormat(NumberFormatKind.Normal)
-        nfAbove_ = createNumberFormat(NumberFormatKind.Above)
+        this.maxFraction = maxFraction
+        this.maxInteger = maxInteger
+        ExpUp = 10.0.pow(maxInteger.toDouble())
+        nfBelow = createNumberFormat(NumberFormatKind.Below)
+        nfNormal = createNumberFormat(NumberFormatKind.Normal)
+        nfAbove = createNumberFormat(NumberFormatKind.Above)
     }
 
     private fun createNumberFormat(kind: NumberFormatKind): NumberFormat {
 
         // If you do not use the Guava library, replace it with createSharp(precision);
-        val sharpByPrecision: String = Strings.repeat("#", maxFraction_)
+        val sharpByPrecision: String = Strings.repeat("#", maxFraction)
         val f = NumberFormat.getInstance(Locale.US)
 
         // Apply bankers' rounding:  this is the rounding mode that
@@ -67,8 +70,7 @@ class DoubleFormatter(maxInteger: Int, maxFraction: Int) {
         // repeatedly over a sequence of calculations
         f.roundingMode = RoundingMode.HALF_EVEN
         if (f is DecimalFormat) {
-            val df = f
-            val dfs = df.decimalFormatSymbols
+            val dfs = f.decimalFormatSymbols
 
             // Set group separator to space instead of comma
 
@@ -81,20 +83,20 @@ class DoubleFormatter(maxInteger: Int, maxFraction: Int) {
             } else {
                 dfs.exponentSeparator = "e"
             }
-            df.decimalFormatSymbols = dfs
+            f.decimalFormatSymbols = dfs
 
             // Use exponent format if v is outside of [EXP_DOWN,EXP_UP]
             if (kind == NumberFormatKind.Normal) {
-                if (maxFraction_ == 0) {
-                    df.applyPattern("#,##0")
+                if (maxFraction == 0) {
+                    f.applyPattern("#,##0")
                 } else {
-                    df.applyPattern("#,##0.$sharpByPrecision")
+                    f.applyPattern("#,##0.$sharpByPrecision")
                 }
             } else {
-                if (maxFraction_ == 0) {
-                    df.applyPattern("0E0")
+                if (maxFraction == 0) {
+                    f.applyPattern("0E0")
                 } else {
-                    df.applyPattern("0." + sharpByPrecision + "E0")
+                    f.applyPattern("0." + sharpByPrecision + "E0")
                 }
             }
         }
@@ -108,25 +110,16 @@ class DoubleFormatter(maxInteger: Int, maxFraction: Int) {
         if (v == 0.0) {
             return "0"
         }
-        val absv = Math.abs(v)
+        val absv = abs(v)
         if (absv < EXP_DOWN) {
-            return nfBelow_!!.format(v)
+            return nfBelow!!.format(v)
         }
-        return if (absv > EXP_UP) {
-            nfAbove_!!.format(v)
-        } else nfNormal_!!.format(v)
+        return if (absv > ExpUp) {
+            nfAbove!!.format(v)
+        } else nfNormal!!.format(v)
     }
 
-    /**
-     * Format and higlight the important part (integer part & exponent part)
-     */
-    fun formatHtml(v: Double): String {
-        return if (java.lang.Double.isNaN(v)) {
-            "-"
-        } else htmlize(
-            format(v)
-        )
-    }
+
 
     /**
      * This is the base alogrithm: create a instance of NumberFormat for the value, then format it. It should
@@ -144,7 +137,7 @@ class DoubleFormatter(maxInteger: Int, maxFraction: Int) {
     fun formatInefficient(v: Double): String {
 
         // If you do not use Guava library, replace with createSharp(precision);
-        val sharpByPrecision: String = Strings.repeat("#", maxFraction_)
+        val sharpByPrecision: String = Strings.repeat("#", maxFraction)
         val absv = Math.abs(v)
         val f = NumberFormat.getInstance(Locale.US)
 
@@ -153,26 +146,25 @@ class DoubleFormatter(maxInteger: Int, maxFraction: Int) {
         // repeatedly over a sequence of calculations
         f.roundingMode = RoundingMode.HALF_EVEN
         if (f is DecimalFormat) {
-            val df = f
-            val dfs = df.decimalFormatSymbols
+            val dfs = f.decimalFormatSymbols
 
             // Set group separator to space instead of comma
             dfs.groupingSeparator = ' '
 
             // Set Exponent symbol to minus 'e' instead of 'E'
-            if (absv > EXP_UP) {
+            if (absv > ExpUp) {
                 dfs.exponentSeparator =
                     "e+" //force to display the positive sign in the exponent part
             } else {
                 dfs.exponentSeparator = "e"
             }
-            df.decimalFormatSymbols = dfs
+            f.decimalFormatSymbols = dfs
 
             //use exponent format if v is out side of [EXP_DOWN,EXP_UP]
-            if (absv < EXP_DOWN || absv > EXP_UP) {
-                df.applyPattern("0." + sharpByPrecision + "E0")
+            if (absv < EXP_DOWN || absv > ExpUp) {
+                f.applyPattern("0." + sharpByPrecision + "E0")
             } else {
-                df.applyPattern("#,##0.$sharpByPrecision")
+                f.applyPattern("#,##0.$sharpByPrecision")
             }
         }
         return f.format(v)

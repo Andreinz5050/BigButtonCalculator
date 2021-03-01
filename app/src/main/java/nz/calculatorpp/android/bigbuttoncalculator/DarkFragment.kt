@@ -12,8 +12,6 @@ class DarkFragment : BaseThemeFragment() {
 
 
     companion object {
-        fun newInstance() =
-            DarkFragment()
     }
 
     override fun onCreateView(

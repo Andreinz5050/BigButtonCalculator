@@ -11,8 +11,6 @@ import androidx.navigation.fragment.findNavController
 class LightFragment : BaseThemeFragment() {
 
     companion object {
-        fun newInstance() =
-            LightFragment()
     }
 
 

@@ -3,13 +3,12 @@ package nz.calculatorpp.android.bigbuttoncalculator
 import android.graphics.drawable.Animatable
 import android.os.Bundle
 import android.os.Handler
-
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import nz.calculatorpp.android.bigbuttoncalculator.R
 import kotlinx.android.synthetic.main.splash_screen.*
 
 
@@ -26,7 +25,7 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (animatedImage.drawable as Animatable).start()
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             context?.let {
                 findNavController().navigate(R.id.action_splashFragment_to_lightFragment)
             }
