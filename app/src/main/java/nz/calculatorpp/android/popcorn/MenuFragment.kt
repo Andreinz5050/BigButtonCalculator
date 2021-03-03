@@ -1,4 +1,4 @@
-package nz.calculatorpp.android.bigbuttoncalculator
+package nz.calculatorpp.android.popcorn
 
 import android.content.Context
 import android.graphics.drawable.AnimatedVectorDrawable
