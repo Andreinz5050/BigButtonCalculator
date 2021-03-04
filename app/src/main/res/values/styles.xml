@@ -1,4 +1,4 @@
-<resources xmlns:fancy="http://schemas.android.com/apk/res/android">
+<resources >
 
     <!-- Base application theme. -->
 
@@ -12,51 +12,11 @@
 
 
     <!-- This will set the fade in animation on all your activities by default -->
-    <style name="WindowAnimationTransition">
-        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
-        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
-    </style>
 
-
-    <style name="ButtonStyle" parent="@style/Widget.AppCompat.Button">
-        <item name="android:textSize">54sp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-
-
-        <item name="android:paddingLeft">5dp</item>
-        <item name="android:paddingRight">5dp</item>
-        <item name="android:paddingTop">0dp</item>
-        <item name="android:paddingBottom">2dp</item>
-
-        <item name="android:layout_margin">2dp</item>
-
-        <item name="android:layout_weight">1</item>
-
-
-        <item name="android:minHeight">55dp</item>
-
-
-    </style>
 
     <!-- =============================================================== -->
     <!-- Material-Light styles -->
     <!-- =============================================================== -->
-
-    <style name="buttonResetLight">
-
-        <item name="android:textSize">54sp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">2dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:minHeight">55dp</item>
-
-
-        <item name="android:background">@drawable/btn_reset</item>
-
-
-    </style>
 
 
     <style name="buttonOperationLight">
@@ -123,21 +83,6 @@
 
     </style>
 
-    <style name="buttonDeleteDarkT" parent="buttonOperationLight">
-
-
-        <item name="android:background">@drawable/btn_plus</item>
-
-    </style>
-
-
-    <style name="buttonDeleteLight" parent="buttonOperationLight">
-
-
-        <item name="android:background">@drawable/btn_plus</item>
-
-    </style>
-
 
     <style name="colorDisplayTextLight">
         <item name="android:textColor">@color/colorDisplayText</item>
@@ -147,43 +92,13 @@
         <item name="android:background">@color/colorAppBackground</item>
     </style>
 
-    <style name="colorPrimaryLight">
-        <item name="android:background">@color/colorP</item>
-    </style>
-
-    <style name="colorPrimaryDarkLight">
-        <item name="android:color">@color/colorPDark</item>
-    </style>
-
 
     <!-- =============================================================== -->
     <!-- Material-Dark styles -->
     <!-- =============================================================== -->
 
-    <style name="colorDisplayTextDarkT">
-        <item name="android:textColor">@color/colorDisplayTextDarkT</item>
-    </style>
-
     <style name="colorAppBackgroundDarkT">
         <item name="android:background">@color/colorAppBackgroundDarkT</item>
-    </style>
-
-
-    <style name="buttonBackspaceLight">
-
-        <item name="android:textSize">54sp</item>
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">0dp</item>
-        <item name="layout_constraintWidth_percent">0.243</item>
-        <item name="layout_constraintHeight_percent">0.135</item>
-        <item name="android:layout_margin">2dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:minHeight">55dp</item>
-
-
-        <item name="android:background">@drawable/btn_backspace</item>
-
-
     </style>
 
 
@@ -351,20 +266,6 @@
 
     </style>
 
-    <style name="buttonNumberDarkT">
-
-        <item name="android:textSize">54sp</item>
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">0dp</item>
-        <item name="layout_constraintWidth_percent">0.243</item>
-        <item name="layout_constraintHeight_percent">0.135</item>
-        <item name="android:layout_margin">2dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:minHeight">55dp</item>
-
-
-    </style>
-
     <style name="buttonOperationEqualDarkT" parent="buttonOperationLight">
 
 
@@ -389,17 +290,6 @@
 
 
 </style>
-    <style name="resultLine">
-
-
-        <item name="android:layout_width">168dp</item>
-        <item name="android:layout_height">168dp</item>
-
-        <item name="layout_constraintHeight_percent">0.3</item>
-        <item name="layout_constraintWidth_percent">0.5</item>
-
-
-    </style>
 
 
 </resources>

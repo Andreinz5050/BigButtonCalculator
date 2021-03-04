@@ -1,39 +1,11 @@
 <resources>
     <string name="app_name">Funny Popcorn Calculator</string>
-    <string name="delete">\u1f838</string>
-    <string name="action_settings">Themes</string>
-    <string name="settings">INGREDIENTS</string>
-    <string name="btn_sizing">BUTTON SIZING</string>
-    <string name="number_sizing">NUMBER SIZING</string>
 
-    <string name="drawer_open">Open navigation drawer</string>
-    <string name="drawer_close">Close navigation drawer</string>
-    <string name="_0">0</string>
-    <string name="ac">AC</string>
-    <string name="_7">7</string>
-    <string name="_4">4</string>
-    <string name="_1">1</string>
-    <string name="_Percent">%</string>
-    <string name="_8">8</string>
-    <string name="_5">5</string>
-    <string name="_2">2</string>
-    <string name="_Dot">.</string>
-    <string name="_Divide">/</string>
-    <string name="_9">9</string>
-    <string name="_6">6</string>
-    <string name="_3">3</string>
-    <string name="_Backspace">⬅</string>
-    <string name="_Multiple">×</string>
-    <string name="_Minus">-</string>
-    <string name="_Plus">+</string>
-    <string name="_Equal">=</string>
-    <string name="themes">COOKING MODE</string>
     <string name="cooking_mode">COOKING MODE</string>
     <string name="mainview">mainView</string>
     <string name="evaluation_line">evaluation line</string>
     <string name="result_line">result line</string>
     <string name="reset_button">reset button</string>
-    <string name="button_equql">button equql</string>
     <string name="button_plus">button plus</string>
     <string name="button_minus">button minus</string>
     <string name="button_multiply">button multiply</string>
