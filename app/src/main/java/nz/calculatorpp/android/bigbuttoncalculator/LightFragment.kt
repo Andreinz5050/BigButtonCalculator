@@ -1,4 +1,4 @@
-package nz.calculatorpp.android.popcorn
+package nz.calculatorpp.android.bigbuttoncalculator
 
 import android.content.Context
 import android.os.Bundle

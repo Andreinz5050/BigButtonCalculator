@@ -9,7 +9,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 30
     defaultConfig {
-        applicationId "nz.calculatorpp.android.popcorn"
+        applicationId "nz.calculatorpp.android.bigbuttoncalculator"
         minSdkVersion 22
         targetSdkVersion 30
         versionCode 9

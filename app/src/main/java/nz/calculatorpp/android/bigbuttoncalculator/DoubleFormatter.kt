@@ -1,4 +1,4 @@
-package nz.calculatorpp.android.popcorn
+package nz.calculatorpp.android.bigbuttoncalculator
 
 import com.google.common.base.Preconditions
 import com.google.common.base.Strings

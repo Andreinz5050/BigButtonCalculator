@@ -1,4 +1,4 @@
-package nz.calculatorpp.android.popcorn
+package nz.calculatorpp.android.bigbuttoncalculator
 
 import org.junit.Test
 
